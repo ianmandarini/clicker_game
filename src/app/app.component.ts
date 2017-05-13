@@ -38,8 +38,8 @@ export class AppComponent implements OnInit {
     this.moneys_enabled = true;
     if(this.num_clicks >= this.money_cost)
     {
-      this.money_base_cost = this.num_clicks;
-      this.money_cost = Math.floor(this.money_cost * this.money_cost_multiplier);
+      this.money_base_cost += this.money_cost;
+      this.money_extra_cost = Math.floor(this.money_extra_cost * this.money_cost_multiplier);
       this.num_moneys += 1;
       this.money_cost = this.money_base_cost + this.money_extra_cost;
     }
