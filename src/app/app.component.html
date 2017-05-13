@@ -1,3 +1,17 @@
 <h1>
-  {{title}}
+  Clicker
 </h1>
+
+<div>
+	Resources: {{resources}}
+</div>
+<div *ngIf="clickers_count > 0">
+	Clickers: {{clickers_count}}
+</div>
+
+<div>
+	<button class="btn btn-primary" (click)="onButtonClick()">Give Me 1 Resource</button>
+</div>
+<div *ngIf="resources >= clicker_cost || clickers_count > 0">
+	<button class="btn btn-primary" [disabled]="resources < clicker_cost" (click)="onButtonClickerClick()">Give Me 1 Clicker ({{clicker_cost}} resources)</button>
+</div>

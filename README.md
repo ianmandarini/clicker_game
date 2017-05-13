@@ -2,6 +2,11 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.3.
 
+## (Extra) Packages Used
+
+Bootstrap v4 [http://v4-alpha.getbootstrap.com/](http://v4-alpha.getbootstrap.com/)
+NgBootstrap 4: [https://ng-bootstrap.github.io/#/home](https://ng-bootstrap.github.io/#/home)
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
