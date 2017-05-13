@@ -6,6 +6,7 @@ import { LanguageTemplate } from 'app/language/language-template';
 export class LanguageService {
 
   private languages: { [id: string] : LanguageTemplate; } = { "en-us" : EnUs };
+  private current_language_string = "en-us";
   private current_language: LanguageTemplate = this.languages["en-us"];
 
   constructor()
@@ -15,7 +16,14 @@ export class LanguageService {
 
   txt(text: string): string
   {
-    return this.current_language[text];
+    if( text in this.current_language )
+    {
+      return this.current_language[text];
+    }
+    else
+    {
+      console.error(`Language Error: ${text} has not been translated to ${this.current_language_string}`);
+    }
   }
 
 }

@@ -7,32 +7,58 @@ import { LanguageService } from 'app/language/language.service'
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  public resources: number = 0;
+
+  public click_enabled: boolean = false;
+  public num_clicks: number = 0;
+
+  public moneys_enabled: boolean = false;
+  private money_base_cost: number = 0;
+  private money_extra_cost: number = 10;
+  private money_cost_multiplier: number = 1.1;
+  public money_cost: number = this.money_base_cost + this.money_extra_cost;
+  public num_moneys: number = 0;
+
+  public clickers_enabled: boolean = false;
+  private clicker_cost_multiplier: number = 1.1;
   public clicker_cost: number = 10;
-  public clickers_count: number = 0;
+  public num_clickers: number = 0;
 
   constructor(public lang: LanguageService)
   {
   }
 
-  onButtonClick()
+  click()
   {
-    this.resources += 1;
+    this.click_enabled = true;
+    this.num_clicks += 1;
   }
 
-  onButtonClickerClick()
+  buyMoney()
   {
-    if(this.resources >= this.clicker_cost)
+    this.moneys_enabled = true;
+    if(this.num_clicks >= this.money_cost)
     {
-      this.resources -= this.clicker_cost;
-      this.clicker_cost = Math.floor(this.clicker_cost * 1.1);
-      this.clickers_count += 1;
+      this.money_base_cost = this.num_clicks;
+      this.money_cost = Math.floor(this.money_cost * this.money_cost_multiplier);
+      this.num_moneys += 1;
+      this.money_cost = this.money_base_cost + this.money_extra_cost;
+    }
+  }
+
+  buyClicker()
+  {
+    this.clickers_enabled = true;
+    if(this.num_moneys >= this.clicker_cost)
+    {
+      this.num_moneys -= this.clicker_cost;
+      this.clicker_cost = Math.floor(this.clicker_cost * this.clicker_cost_multiplier);
+      this.num_clickers += 1;
     }
   }
 
   clickerTick()
   {
-    this.resources += this.clickers_count;
+    this.num_clicks += this.num_clickers;
   }
 
   ngOnInit()

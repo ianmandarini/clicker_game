@@ -1,17 +1,55 @@
-<h1>
-  {{lang.txt("title")}}
-</h1>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-4 text-center">
+      <h1>
+        {{lang.txt("title")}}
+      </h1>
+    </div>
+  </div>
 
-<div>
-	{{lang.txt("resource_label")}}: {{resources}}
-</div>
-<div *ngIf="clickers_count > 0">
-	{{lang.txt("clicker_label")}}: {{clickers_count}}
-</div>
+  <div class="row justify-content-center">
+    <div class="col-4 text-center">
+      <div *ngIf="click_enabled">
+        {{lang.txt("Clicks")}}: {{num_clicks}}
+      </div>
+      <div *ngIf="moneys_enabled">
+        {{lang.txt("Moneys")}}: {{num_moneys}}
+      </div>
+      <div *ngIf="clickers_enabled">
+        {{lang.txt("Clickers")}}: {{num_clickers}}
+      </div>
+    </div>
+  </div>
 
-<div>
-	<button class="btn btn-primary" (click)="onButtonClick()">Give Me 1 Resource</button>
-</div>
-<div *ngIf="resources >= clicker_cost || clickers_count > 0">
-	<button class="btn btn-primary" [disabled]="resources < clicker_cost" (click)="onButtonClickerClick()">Give Me 1 Clicker ({{clicker_cost}} resources)</button>
+
+  <div class="row justify-content-center">
+    <div class="col-4 text-center">
+
+      <div>
+        <button type="button" class="btn btn-primary" (click)="click()">{{lang.txt("Click Me")}}</button>
+        <button type="button" *ngIf="num_clicks >= money_cost || moneys_enabled" class="btn btn-primary" [disabled]="num_clicks < money_cost" (click)="buyMoney()">
+          {{lang.txt("Convert")}}
+          {{lang.txt("Clicks")}}
+          {{lang.txt("to Money")}}
+          (
+          {{lang.txt("Requires")}}
+          {{money_cost}}
+          {{lang.txt("Clicks")}}
+          )
+        </button>
+        <button type="button" *ngIf="num_moneys >= clicker_cost || clickers_enabled" class="btn btn-primary" [disabled]="num_moneys < clicker_cost" (click)="buyClicker()">
+          {{lang.txt("Buy")}}
+          1
+          {{lang.txt("clicker")}}
+          (
+          {{lang.txt("cost")}}:
+          {{clicker_cost}}
+          {{lang.txt("moneys")}}
+          )
+        </button>
+      </div>
+
+    </div>
+  </div>
+
 </div>
