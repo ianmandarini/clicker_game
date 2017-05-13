@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LanguageService } from 'app/language/language.service'
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,7 @@ export class AppComponent implements OnInit {
   public clicker_cost: number = 10;
   public clickers_count: number = 0;
 
-  constructor()
+  constructor(public lang: LanguageService)
   {
   }
 
