@@ -10,13 +10,13 @@
   <div class="row justify-content-center">
     <div class="col text-center">
       <div *ngIf="click_enabled">
-        {{lang.txt("Clicks")}}: {{num_clicks}}
+        {{lang.txt("Clicks")}}: {{num_clicks_shown}}
       </div>
-      <div *ngIf="moneys_enabled">
-        {{lang.txt("Moneys")}}: {{num_moneys}}
+      <div *ngIf="money_enabled">
+        {{lang.txt("Money")}}: {{num_money_shown}}
       </div>
       <div *ngIf="clickers_enabled">
-        {{lang.txt("Clickers")}}: {{num_clickers}}
+        {{lang.txt("Clickers")}}: {{num_clickers_shown}}
       </div>
     </div>
   </div>
@@ -30,16 +30,22 @@
 
   <div class="row justify-content-center">
     <div class="col text-center">
-      <button type="button" *ngIf="num_clicks >= money_cost || moneys_enabled" class="btn btn-primary" [disabled]="num_clicks < money_cost" (click)="buyMoney()">
+      <button type="button" 
+              *ngIf="num_clicks_shown >= money_cost_shown * reveal_modifier || money_enabled" 
+              class="btn btn-primary" 
+              [disabled]="num_clicks_shown < money_cost_shown" 
+              (click)="buyMoney()">
+
         {{lang.txt("Convert")}}
         {{lang.txt("Clicks")}}
         {{lang.txt("to Money")}}
         <br/>
         (
         {{lang.txt("Requires")}}
-        {{money_cost}}
+        {{money_cost_shown}}
         {{lang.txt("Clicks")}}
         )
+
       </button>
     </div>
   </div>
@@ -47,16 +53,40 @@
 
   <div class="row justify-content-center">
     <div class="col text-center">
-      <button type="button" *ngIf="num_moneys >= clicker_cost || clickers_enabled" class="btn btn-primary" [disabled]="num_moneys < clicker_cost" (click)="buyClicker()">
+      <button type="button" 
+              *ngIf="num_money >= clicker_cost_shown * reveal_modifier || clickers_enabled"
+              class="btn btn-primary" 
+              [disabled]="num_money_shown < clicker_cost_shown" 
+              (click)="buyClicker()">
+
         {{lang.txt("Buy")}}
         1
         {{lang.txt("Clicker")}}
         <br/>
         (
         {{lang.txt("Costs")}}
-        {{clicker_cost}}
-        {{lang.txt("Moneys")}}
+        {{clicker_cost_shown}}
+        {{lang.txt("Money")}}
         )
+
+      </button>
+    </div>
+  </div>
+
+  <div class="row justify-content-center">
+    <div class="col text-center">
+      <button type="button" 
+              *ngIf="num_clicks_shown >= sell_clicks_min_amount_to_enable || sell_clicks_enabled"
+              class="btn btn-warning" 
+              [disabled]="num_clicks_shown < sell_clicks_amount_shown" 
+              (click)="sellClicks()">
+
+        {{lang.txt("Sell")}}
+        {{sell_clicks_amount_shown}}
+        {{lang.txt("Clicks")}}
+        {{lang.txt("For")}}
+        {{sell_clicks_money_amount_shown}}
+        {{lang.txt("Money")}}
       </button>
     </div>
   </div>

@@ -11,8 +11,7 @@ export var EnUs: any = {
   "Clickers": "Clickers",
   "clickers": "clickers",
   "money": "money",
-  "Moneys": "Moneys",
-  "moneys": "moneys",
+  "Money": "Money",
   "Buy": "Buy",
   "cost": "cost",
   "Cost": "Cost",
@@ -22,4 +21,6 @@ export var EnUs: any = {
   "to Money": "to Money",
   "requires": "requires",
   "Requires": "Requires",
+  "For" : "For",
+  "Sell" : "Sell"
 }
