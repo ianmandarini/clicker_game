@@ -99,42 +99,88 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var AppComponent = (function () {
     function AppComponent(lang) {
         this.lang = lang;
+        this.Math = Math;
+        this.reveal_modifier = 0.7;
         this.click_enabled = false;
         this.num_clicks = 0;
-        this.moneys_enabled = false;
+        this.num_clicks_shown = this.num_clicks;
+        this.money_enabled = false;
         this.money_base_cost = 0;
-        this.money_extra_cost = 10;
-        this.money_cost_multiplier = 1.1;
+        this.money_extra_cost = 5;
+        this.money_cost_multiplier = 1.05;
         this.money_cost = this.money_base_cost + this.money_extra_cost;
-        this.num_moneys = 0;
+        this.money_cost_shown = this.money_cost;
+        this.num_money = 0;
+        this.num_money_shown = this.num_money;
         this.clickers_enabled = false;
-        this.clicker_cost_multiplier = 1.1;
-        this.clicker_cost = 10;
+        this.clicker_cost_multiplier = 1.05;
+        this.clicker_cost = 5;
+        this.clicker_cost_shown = this.clicker_cost;
         this.num_clickers = 0;
+        this.num_clickers_shown = this.num_clickers;
+        this.investiments_enabled = false;
+        this.investiments_collapsed = true;
+        this.investiments_min_clicks_to_enable = 200;
+        this.money_invested = 0;
+        this.money_invested_shown = this.money_invested;
+        this.money_invested_multiplier = 1.01;
+        this.money_invested_withdraw = 0;
+        this.money_invested_withdraw_shown = Math.floor(this.money_invested_withdraw);
+        this.money_investiment_added_per_second = 0;
+        this.money_investiment_added_per_second_shown = this.money_investiment_added_per_second;
     }
     AppComponent.prototype.click = function () {
         this.click_enabled = true;
         this.num_clicks += 1;
+        this.num_clicks_shown = Math.floor(this.num_clicks);
     };
     AppComponent.prototype.buyMoney = function () {
-        this.moneys_enabled = true;
-        if (this.num_clicks >= this.money_cost) {
+        this.money_enabled = true;
+        if (this.num_clicks_shown >= this.money_cost_shown) {
             this.money_base_cost += this.money_extra_cost;
-            this.money_extra_cost = Math.floor(this.money_extra_cost * this.money_cost_multiplier);
-            this.num_moneys += 1;
+            this.money_extra_cost *= this.money_cost_multiplier;
             this.money_cost = this.money_base_cost + this.money_extra_cost;
+            this.money_cost_shown = Math.floor(this.money_cost);
+            this.num_money += 1;
+            this.num_money_shown = Math.floor(this.num_money);
         }
     };
     AppComponent.prototype.buyClicker = function () {
         this.clickers_enabled = true;
-        if (this.num_moneys >= this.clicker_cost) {
-            this.num_moneys -= this.clicker_cost;
-            this.clicker_cost = Math.floor(this.clicker_cost * this.clicker_cost_multiplier);
+        if (this.num_money_shown >= this.clicker_cost_shown) {
+            this.num_money -= this.clicker_cost_shown;
+            this.num_money_shown = Math.floor(this.num_money);
+            this.clicker_cost *= this.clicker_cost_multiplier;
+            this.clicker_cost_shown = Math.floor(this.clicker_cost);
             this.num_clickers += 1;
+            this.num_clickers_shown = Math.floor(this.num_clickers);
+        }
+    };
+    AppComponent.prototype.addInvestiment = function () {
+        this.investiments_enabled = true;
+        if (this.num_money_shown >= 1) {
+            this.num_money -= 1;
+            this.num_money_shown = Math.floor(this.num_money);
+            this.money_invested += 1;
+            this.money_invested_shown = Math.floor(this.money_invested);
+            this.money_investiment_added_per_second = this.money_invested * this.money_invested_multiplier - this.money_invested;
+            this.money_investiment_added_per_second_shown = Math.floor(this.money_investiment_added_per_second * 100.0) / 100.0;
+        }
+    };
+    AppComponent.prototype.withdrawInvestiment = function () {
+        this.investiments_enabled = true;
+        if (this.money_invested_withdraw_shown >= 1) {
+            this.num_money += 1;
+            this.num_money_shown = Math.floor(this.num_money);
+            this.money_invested_withdraw -= 1;
+            this.money_invested_withdraw_shown = Math.floor(this.money_invested_withdraw);
         }
     };
     AppComponent.prototype.clickerTick = function () {
         this.num_clicks += this.num_clickers;
+        this.num_clicks_shown = Math.floor(this.num_clicks);
+        this.money_invested_withdraw += this.money_investiment_added_per_second;
+        this.money_invested_withdraw_shown = Math.floor(this.money_invested_withdraw);
     };
     AppComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -216,6 +262,7 @@ AppModule = __decorate([
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EnUs; });
 var EnUs = {
     "title": "The Clicker Saga",
+    "credits": "Made by Ian Albuquerque",
     "click": "click",
     "Click": "Click",
     "Clicks": "Clicks",
@@ -225,8 +272,7 @@ var EnUs = {
     "Clickers": "Clickers",
     "clickers": "clickers",
     "money": "money",
-    "Moneys": "Moneys",
-    "moneys": "moneys",
+    "Money": "Money",
     "Buy": "Buy",
     "cost": "cost",
     "Cost": "Cost",
@@ -236,6 +282,21 @@ var EnUs = {
     "to Money": "to Money",
     "requires": "requires",
     "Requires": "Requires",
+    "For": "For",
+    "Sell": "Sell",
+    "Show": "Show",
+    "Hide": "Hide",
+    "Investiments": "Investiments",
+    "Invested": "Invested",
+    "Add": "Add",
+    "Remove": "Remove",
+    "Multiplier": "Multiplier",
+    "per": "per",
+    "second": "second",
+    "Permanently": "Permanently",
+    "Withdraw": "Withdraw",
+    "for": "for",
+    "Available": "Available"
 };
 //# sourceMappingURL=en-us.js.map
 
@@ -266,7 +327,7 @@ exports = module.exports = __webpack_require__(68)(false);
 
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, ".container {\r\n\tmargin-top: 50px;\r\n}\r\n\r\n.card {\r\n\tpadding: 20px;\r\n  margin: 5px;\r\n}", ""]);
 
 // exports
 
@@ -279,7 +340,7 @@ module.exports = module.exports.toString();
 /***/ 209:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <div class=\"row justify-content-center\">\n    <div class=\"col text-center\">\n      <h1>\n        {{lang.txt(\"title\")}}\n      </h1>\n    </div>\n  </div>\n\n  <div class=\"row justify-content-center\">\n    <div class=\"col text-center\">\n      <div *ngIf=\"click_enabled\">\n        {{lang.txt(\"Clicks\")}}: {{num_clicks}}\n      </div>\n      <div *ngIf=\"moneys_enabled\">\n        {{lang.txt(\"Moneys\")}}: {{num_moneys}}\n      </div>\n      <div *ngIf=\"clickers_enabled\">\n        {{lang.txt(\"Clickers\")}}: {{num_clickers}}\n      </div>\n    </div>\n  </div>\n\n\n  <div class=\"row justify-content-center\">\n    <div class=\"col text-center\">\n      <button type=\"button\" class=\"btn btn-primary\" (click)=\"click()\">{{lang.txt(\"Click Me\")}}</button>\n    </div>\n  </div>\n\n  <div class=\"row justify-content-center\">\n    <div class=\"col text-center\">\n      <button type=\"button\" *ngIf=\"num_clicks >= money_cost || moneys_enabled\" class=\"btn btn-primary\" [disabled]=\"num_clicks < money_cost\" (click)=\"buyMoney()\">\n        {{lang.txt(\"Convert\")}}\n        {{lang.txt(\"Clicks\")}}\n        {{lang.txt(\"to Money\")}}\n        <br/>\n        (\n        {{lang.txt(\"Requires\")}}\n        {{money_cost}}\n        {{lang.txt(\"Clicks\")}}\n        )\n      </button>\n    </div>\n  </div>\n\n\n  <div class=\"row justify-content-center\">\n    <div class=\"col text-center\">\n      <button type=\"button\" *ngIf=\"num_moneys >= clicker_cost || clickers_enabled\" class=\"btn btn-primary\" [disabled]=\"num_moneys < clicker_cost\" (click)=\"buyClicker()\">\n        {{lang.txt(\"Buy\")}}\n        1\n        {{lang.txt(\"Clicker\")}}\n        <br/>\n        (\n        {{lang.txt(\"Costs\")}}\n        {{clicker_cost}}\n        {{lang.txt(\"Moneys\")}}\n        )\n      </button>\n    </div>\n  </div>\n\n</div>\n"
+module.exports = "<div class=\"container\">\n  <div class=\"row justify-content-center\">\n    <div class=\"col text-center\">\n      <h1>\n        {{lang.txt(\"title\")}}\n      </h1>\n    </div>\n  </div>\n\n  <div class=\"row justify-content-center\">\n    <div class=\"col text-center\">\n      <div *ngIf=\"click_enabled\">\n        {{lang.txt(\"Clicks\")}}: {{num_clicks_shown}}\n      </div>\n      <div *ngIf=\"money_enabled\">\n        {{lang.txt(\"Money\")}}: {{num_money_shown}}\n      </div>\n      <div *ngIf=\"clickers_enabled\">\n        {{lang.txt(\"Clickers\")}}: {{num_clickers_shown}}\n      </div>\n    </div>\n  </div>\n\n\n  <div class=\"row justify-content-center\">\n    <div class=\"col text-center\">\n      <button type=\"button\" class=\"btn btn-primary\" (click)=\"click()\">{{lang.txt(\"Click Me\")}}</button>\n    </div>\n  </div>\n\n  <div class=\"row justify-content-center\">\n    <div class=\"col text-center\">\n      <button type=\"button\" \n              *ngIf=\"num_clicks_shown >= money_cost_shown * reveal_modifier || money_enabled\" \n              class=\"btn btn-primary\" \n              [disabled]=\"num_clicks_shown < money_cost_shown\" \n              (click)=\"buyMoney()\">\n\n        {{lang.txt(\"Convert\")}}\n        {{lang.txt(\"Clicks\")}}\n        {{lang.txt(\"to Money\")}}\n        <br/>\n        (\n        {{lang.txt(\"Requires\")}}\n        {{money_cost_shown}}\n        {{lang.txt(\"Clicks\")}}\n        )\n\n      </button>\n    </div>\n  </div>\n\n\n  <div class=\"row justify-content-center\">\n    <div class=\"col text-center\">\n      <button type=\"button\" \n              *ngIf=\"num_money >= clicker_cost_shown * reveal_modifier || clickers_enabled\"\n              class=\"btn btn-primary\" \n              [disabled]=\"num_money_shown < clicker_cost_shown\" \n              (click)=\"buyClicker()\">\n\n        {{lang.txt(\"Buy\")}}\n        1\n        {{lang.txt(\"Clicker\")}}\n        <br/>\n        (\n        {{lang.txt(\"Costs\")}}\n        {{clicker_cost_shown}}\n        {{lang.txt(\"Money\")}}\n        )\n      </button>\n    </div>\n  </div>\n\n  <div class=\"row justify-content-center\">\n    <div class=\"col text-center\">\n      <button\n            *ngIf=\"num_clicks_shown >= investiments_min_clicks_to_enable || investiments_enabled\" \n            type=\"button\" \n            class=\"btn btn-outline-primary\" \n            (click)=\"investiments_collapsed = !investiments_collapsed\">\n        {{lang.txt(\"Show\")}}/{{lang.txt(\"Hide\")}} {{lang.txt(\"Investiments\")}}\n      </button>\n    </div>\n  </div>\n\n  <div class=\"row justify-content-center\" [ngbCollapse]=\"investiments_collapsed\">\n    <div class=\"col text-center\">\n\n      <div class=\"card\">\n\n        <div class=\"row justify-content-center\">\n          <div class=\"col text-center\">\n            {{lang.txt(\"Multiplier\")}}: \n            {{money_invested_multiplier}} \n            ( \n            {{money_investiment_added_per_second_shown}} \n            {{lang.txt(\"money\")}} \n            {{lang.txt(\"per\")}} \n            {{lang.txt(\"second\")}}\n            )\n          </div>\n        </div>\n\n        <div class=\"row\">\n          <div class=\"col text-center\">\n            {{lang.txt(\"Money\")}} {{lang.txt(\"Invested\")}}: {{money_invested_shown}}\n            <button\n                  type=\"button\" \n                  class=\"btn btn-primary\" \n                  (click)=\"addInvestiment()\">\n              {{lang.txt(\"Permanently\")}} {{lang.txt(\"Add\")}}\n            </button>\n          </div>\n        </div>\n\n        <div class=\"row\">\n          <div class=\"col text-center\">\n            {{lang.txt(\"Money\")}}\n            {{lang.txt(\"Available\")}}\n            {{lang.txt(\"for\")}}\n            {{lang.txt(\"Withdraw\")}}:\n            {{money_invested_withdraw_shown}}\n            <button\n                  type=\"button\" \n                  class=\"btn btn-primary\" \n                  (click)=\"withdrawInvestiment()\">\n              {{lang.txt(\"Withdraw\")}}\n            </button>\n          </div>\n        </div>\n        \n      </div>\n    </div>\n  </div>\n\n  <div class=\"row justify-content-center\">\n    <div class=\"col text-center\">\n      <small>\n        {{lang.txt(\"credits\")}}\n      </small>\n    </div>\n  </div>\n\n</div>\n"
 
 /***/ }),
 
