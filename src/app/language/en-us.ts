@@ -1,11 +1,13 @@
 import { LanguageTemplate } from 'app/language/language-template';
 
 export var EnUs: any = {
-  "title": "Clicker: The Saga",
+  "title": "The Clicker Saga",
   "click": "click",
+  "Click": "Click",
   "Clicks": "Clicks",
   "clicks": "clicks",
   "clicker": "clicker",
+  "Clicker": "Clicker",
   "Clickers": "Clickers",
   "clickers": "clickers",
   "money": "money",
@@ -13,6 +15,8 @@ export var EnUs: any = {
   "moneys": "moneys",
   "Buy": "Buy",
   "cost": "cost",
+  "Cost": "Cost",
+  "Costs": "Costs",
   "Click Me": "Click Me",
   "Convert": "Convert",
   "to Money": "to Money",

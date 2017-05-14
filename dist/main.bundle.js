@@ -119,8 +119,8 @@ var AppComponent = (function () {
     AppComponent.prototype.buyMoney = function () {
         this.moneys_enabled = true;
         if (this.num_clicks >= this.money_cost) {
-            this.money_base_cost = this.num_clicks;
-            this.money_cost = Math.floor(this.money_cost * this.money_cost_multiplier);
+            this.money_base_cost += this.money_extra_cost;
+            this.money_extra_cost = Math.floor(this.money_extra_cost * this.money_cost_multiplier);
             this.num_moneys += 1;
             this.money_cost = this.money_base_cost + this.money_extra_cost;
         }
@@ -215,11 +215,13 @@ AppModule = __decorate([
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EnUs; });
 var EnUs = {
-    "title": "Clicker: The Saga",
+    "title": "The Clicker Saga",
     "click": "click",
+    "Click": "Click",
     "Clicks": "Clicks",
     "clicks": "clicks",
     "clicker": "clicker",
+    "Clicker": "Clicker",
     "Clickers": "Clickers",
     "clickers": "clickers",
     "money": "money",
@@ -227,6 +229,8 @@ var EnUs = {
     "moneys": "moneys",
     "Buy": "Buy",
     "cost": "cost",
+    "Cost": "Cost",
+    "Costs": "Costs",
     "Click Me": "Click Me",
     "Convert": "Convert",
     "to Money": "to Money",
@@ -275,7 +279,7 @@ module.exports = module.exports.toString();
 /***/ 209:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <div class=\"row justify-content-center\">\n    <div class=\"col-4 text-center\">\n      <h1>\n        {{lang.txt(\"title\")}}\n      </h1>\n    </div>\n  </div>\n\n  <div class=\"row justify-content-center\">\n    <div class=\"col-4 text-center\">\n      <div *ngIf=\"click_enabled\">\n        {{lang.txt(\"Clicks\")}}: {{num_clicks}}\n      </div>\n      <div *ngIf=\"moneys_enabled\">\n        {{lang.txt(\"Moneys\")}}: {{num_moneys}}\n      </div>\n      <div *ngIf=\"clickers_enabled\">\n        {{lang.txt(\"Clickers\")}}: {{num_clickers}}\n      </div>\n    </div>\n  </div>\n\n\n  <div class=\"row justify-content-center\">\n    <div class=\"col-4 text-center\">\n\n      <div>\n        <button type=\"button\" class=\"btn btn-primary\" (click)=\"click()\">{{lang.txt(\"Click Me\")}}</button>\n        <button type=\"button\" *ngIf=\"num_clicks >= money_cost || moneys_enabled\" class=\"btn btn-primary\" [disabled]=\"num_clicks < money_cost\" (click)=\"buyMoney()\">\n          {{lang.txt(\"Convert\")}}\n          {{lang.txt(\"Clicks\")}}\n          {{lang.txt(\"to Money\")}}\n          (\n          {{lang.txt(\"Requires\")}}\n          {{money_cost}}\n          {{lang.txt(\"Clicks\")}}\n          )\n        </button>\n        <button type=\"button\" *ngIf=\"num_moneys >= clicker_cost || clickers_enabled\" class=\"btn btn-primary\" [disabled]=\"num_moneys < clicker_cost\" (click)=\"buyClicker()\">\n          {{lang.txt(\"Buy\")}}\n          1\n          {{lang.txt(\"clicker\")}}\n          (\n          {{lang.txt(\"cost\")}}:\n          {{clicker_cost}}\n          {{lang.txt(\"moneys\")}}\n          )\n        </button>\n      </div>\n\n    </div>\n  </div>\n\n</div>\n"
+module.exports = "<div class=\"container\">\n  <div class=\"row justify-content-center\">\n    <div class=\"col text-center\">\n      <h1>\n        {{lang.txt(\"title\")}}\n      </h1>\n    </div>\n  </div>\n\n  <div class=\"row justify-content-center\">\n    <div class=\"col text-center\">\n      <div *ngIf=\"click_enabled\">\n        {{lang.txt(\"Clicks\")}}: {{num_clicks}}\n      </div>\n      <div *ngIf=\"moneys_enabled\">\n        {{lang.txt(\"Moneys\")}}: {{num_moneys}}\n      </div>\n      <div *ngIf=\"clickers_enabled\">\n        {{lang.txt(\"Clickers\")}}: {{num_clickers}}\n      </div>\n    </div>\n  </div>\n\n\n  <div class=\"row justify-content-center\">\n    <div class=\"col text-center\">\n      <button type=\"button\" class=\"btn btn-primary\" (click)=\"click()\">{{lang.txt(\"Click Me\")}}</button>\n    </div>\n  </div>\n\n  <div class=\"row justify-content-center\">\n    <div class=\"col text-center\">\n      <button type=\"button\" *ngIf=\"num_clicks >= money_cost || moneys_enabled\" class=\"btn btn-primary\" [disabled]=\"num_clicks < money_cost\" (click)=\"buyMoney()\">\n        {{lang.txt(\"Convert\")}}\n        {{lang.txt(\"Clicks\")}}\n        {{lang.txt(\"to Money\")}}\n        <br/>\n        (\n        {{lang.txt(\"Requires\")}}\n        {{money_cost}}\n        {{lang.txt(\"Clicks\")}}\n        )\n      </button>\n    </div>\n  </div>\n\n\n  <div class=\"row justify-content-center\">\n    <div class=\"col text-center\">\n      <button type=\"button\" *ngIf=\"num_moneys >= clicker_cost || clickers_enabled\" class=\"btn btn-primary\" [disabled]=\"num_moneys < clicker_cost\" (click)=\"buyClicker()\">\n        {{lang.txt(\"Buy\")}}\n        1\n        {{lang.txt(\"Clicker\")}}\n        <br/>\n        (\n        {{lang.txt(\"Costs\")}}\n        {{clicker_cost}}\n        {{lang.txt(\"Moneys\")}}\n        )\n      </button>\n    </div>\n  </div>\n\n</div>\n"
 
 /***/ }),
 
