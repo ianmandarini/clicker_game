@@ -31,15 +31,16 @@ export class AppComponent implements OnInit {
   public num_clickers: number = 0;
   public num_clickers_shown: number = this.num_clickers;
 
-  public sell_clicks_enabled: boolean = false;
-  public sell_clicks_min_amount_to_enable: number = 300;
-  private sell_clicks_amount: number = 100;
-  public sell_clicks_amount_shown: number = this.sell_clicks_amount;
-  private sell_clicks_money_amount: number = 4;
-  public sell_clicks_money_amount_shown: number = this.sell_clicks_money_amount;
-  private sell_clicks_amount_multiplier: number = 1.5;
-  private sell_clicks_money_amount_multiplier: number = 1.5;
-
+  public investiments_enabled: boolean = false;
+  public investiments_collapsed: boolean = true;
+  public investiments_min_clicks_to_enable: number = 200;
+  private money_invested: number = 0;
+  public money_invested_shown: number = this.money_invested;
+  public money_invested_multiplier: number = 1.01;
+  private money_invested_withdraw: number = 0;
+  public money_invested_withdraw_shown: number = Math.floor(this.money_invested_withdraw);
+  private money_investiment_added_per_second: number = 0;
+  public money_investiment_added_per_second_shown: number = this.money_investiment_added_per_second;
 
   constructor(public lang: LanguageService)
   {
@@ -84,29 +85,42 @@ export class AppComponent implements OnInit {
     }
   }
 
-  sellClicks()
+  addInvestiment()
   {
-    this.sell_clicks_enabled = true;
-    if(this.num_clicks_shown >= this.sell_clicks_amount_shown)
+    this.investiments_enabled = true;
+    if(this.num_money_shown >= 1)
     {
-      this.num_clicks -= this.sell_clicks_amount_shown;
-      this.num_clicks_shown = Math.floor(this.num_clicks);
-
-      this.num_money += this.sell_clicks_money_amount_shown;
+      this.num_money -= 1;
       this.num_money_shown = Math.floor(this.num_money);
 
-      this.sell_clicks_amount *= this.sell_clicks_amount_multiplier;
-      this.sell_clicks_amount_shown = Math.floor(this.sell_clicks_amount);
+      this.money_invested += 1;
+      this.money_invested_shown = Math.floor(this.money_invested);
 
-      this.sell_clicks_money_amount *= this.sell_clicks_money_amount_multiplier;
-      this.sell_clicks_money_amount_shown = Math.floor(this.sell_clicks_money_amount);
+      this.money_investiment_added_per_second = this.money_invested * this.money_invested_multiplier - this.money_invested;
+      this.money_investiment_added_per_second_shown = Math.floor(this.money_investiment_added_per_second*100.0)/100.0
     }
+  }
+
+  withdrawInvestiment()
+  {
+    this.investiments_enabled = true;
+    if(this.money_invested_withdraw_shown >= 1)
+    {
+      this.num_money += 1;
+      this.num_money_shown = Math.floor(this.num_money);
+
+      this.money_invested_withdraw -= 1;
+      this.money_invested_withdraw_shown = Math.floor(this.money_invested_withdraw);
+    }    
   }
 
   clickerTick()
   {
     this.num_clicks += this.num_clickers;
     this.num_clicks_shown = Math.floor(this.num_clicks);
+
+    this.money_invested_withdraw += this.money_investiment_added_per_second;
+    this.money_invested_withdraw_shown = Math.floor(this.money_invested_withdraw);
   }
 
   ngOnInit()

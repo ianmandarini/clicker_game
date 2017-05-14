@@ -2,6 +2,7 @@ import { LanguageTemplate } from 'app/language/language-template';
 
 export var EnUs: any = {
   "title": "The Clicker Saga",
+  "credits": "Made by Ian Albuquerque",
   "click": "click",
   "Click": "Click",
   "Clicks": "Clicks",
@@ -22,5 +23,18 @@ export var EnUs: any = {
   "requires": "requires",
   "Requires": "Requires",
   "For" : "For",
-  "Sell" : "Sell"
+  "Sell" : "Sell",
+  "Show" : "Show",
+  "Hide" : "Hide",
+  "Investiments" : "Investiments",
+  "Invested" : "Invested",
+  "Add" : "Add",
+  "Remove" : "Remove",
+  "Multiplier" : "Multiplier",
+  "per" : "per",
+  "second" : "second",
+  "Permanently" : "Permanently",
+  "Withdraw" : "Withdraw",
+  "for" : "for",
+  "Available" : "Available"
 }

@@ -68,26 +68,77 @@
         {{clicker_cost_shown}}
         {{lang.txt("Money")}}
         )
-
       </button>
     </div>
   </div>
 
   <div class="row justify-content-center">
     <div class="col text-center">
-      <button type="button" 
-              *ngIf="num_clicks_shown >= sell_clicks_min_amount_to_enable || sell_clicks_enabled"
-              class="btn btn-warning" 
-              [disabled]="num_clicks_shown < sell_clicks_amount_shown" 
-              (click)="sellClicks()">
-
-        {{lang.txt("Sell")}}
-        {{sell_clicks_amount_shown}}
-        {{lang.txt("Clicks")}}
-        {{lang.txt("For")}}
-        {{sell_clicks_money_amount_shown}}
-        {{lang.txt("Money")}}
+      <button
+            *ngIf="num_clicks_shown >= investiments_min_clicks_to_enable || investiments_enabled" 
+            type="button" 
+            class="btn btn-outline-primary" 
+            (click)="investiments_collapsed = !investiments_collapsed">
+        {{lang.txt("Show")}}/{{lang.txt("Hide")}} {{lang.txt("Investiments")}}
       </button>
+    </div>
+  </div>
+
+  <div class="row justify-content-center" [ngbCollapse]="investiments_collapsed">
+    <div class="col text-center">
+
+      <div class="card">
+
+        <div class="row justify-content-center">
+          <div class="col text-center">
+            {{lang.txt("Multiplier")}}: 
+            {{money_invested_multiplier}} 
+            ( 
+            {{money_investiment_added_per_second_shown}} 
+            {{lang.txt("money")}} 
+            {{lang.txt("per")}} 
+            {{lang.txt("second")}}
+            )
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col text-center">
+            {{lang.txt("Money")}} {{lang.txt("Invested")}}: {{money_invested_shown}}
+            <button
+                  type="button" 
+                  class="btn btn-primary" 
+                  (click)="addInvestiment()">
+              {{lang.txt("Permanently")}} {{lang.txt("Add")}}
+            </button>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col text-center">
+            {{lang.txt("Money")}}
+            {{lang.txt("Available")}}
+            {{lang.txt("for")}}
+            {{lang.txt("Withdraw")}}:
+            {{money_invested_withdraw_shown}}
+            <button
+                  type="button" 
+                  class="btn btn-primary" 
+                  (click)="withdrawInvestiment()">
+              {{lang.txt("Withdraw")}}
+            </button>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row justify-content-center">
+    <div class="col text-center">
+      <small>
+        {{lang.txt("credits")}}
+      </small>
     </div>
   </div>
 
