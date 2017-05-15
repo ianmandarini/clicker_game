@@ -1,0 +1,19 @@
+<p>
+  {{lang.Txt(clickers.tagS(clicker_index))}}
+  (
+  {{lang.Txt("count")}}:
+  {{clickers.xcount(clicker_index)}}
+  )
+<br/>
+  {{lang.Txt(clickers.tagDescription(clicker_index))}}
+<br/>
+  {{lang.Txt("costs")}}
+  {{clickers.xcost(clicker_index)}}
+  {{lang.Txt(currency.tagP(clickers.getCurrency(clicker_index)))}}
+<br/>
+<button type="button"
+      class="btn btn-primary"
+      [disabled]="!clickers.canPurchase(clicker_index)" 
+      (click)="clickers.purchase(clicker_index)">
+  {{lang.Txt("buy")}}
+</button>

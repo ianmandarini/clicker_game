@@ -14,7 +14,7 @@ export class LanguageService {
 
   }
 
-  txt(text: string): string
+  public txt(text: string): string
   {
     if( text in this.current_language )
     {
@@ -23,7 +23,15 @@ export class LanguageService {
     else
     {
       console.error(`Language Error: ${text} has not been translated to ${this.current_language_string}`);
+      return "LANGUAGE ERROR"
     }
+  }
+
+  public Txt(text: string): string
+  {
+    let display_string = this.txt(text);
+    display_string = display_string.slice(0,1).toUpperCase() + display_string.slice(1);
+    return display_string;
   }
 
 }
