@@ -45,6 +45,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit()
   {
-    setInterval(() => {this.gameTick()},100);
+    setInterval(() => {this.gameTick()},1);
   }
 }

@@ -60,7 +60,7 @@ export class Clicker {
 
   public tick(): void
   {
-    this.currencyService.add(0,this.cps()/10.0);
+    this.currencyService.add(0,this.cps()/1000.0);
   }
 
   public xcount(): number

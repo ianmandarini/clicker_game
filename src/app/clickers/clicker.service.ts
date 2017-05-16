@@ -10,7 +10,7 @@ export class ClickerService {
   constructor(private currencyService: CurrencyService) 
   { 
     this.clickers.push(new Clicker(currencyService,"clicker","clickers","clicker_description",0.1,0,20,1.05));
-    this.clickers.push(new Clicker(currencyService,"intern","interns","intern_description",2,0,200,1.05));
+    this.clickers.push(new Clicker(currencyService,"intern","interns","intern_description",2,0,300,1.10));
   }
 
   public tagS(clicker_index: number): string

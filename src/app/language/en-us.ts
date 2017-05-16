@@ -20,5 +20,5 @@ export var EnUs: any = {
   "click_button_text": "Click Me",
   "intern" : "intern",
   "interns" : "interns",
-  "intern_description" : "A multi-use, cheap, expandable resource. It has two hands, which allows it to operate at double the frequency.",
+  "intern_description" : "A multi-use, cheap, expandable resource. It features two hands, which allows it to operate at two clicks per second. Amazing!",
 }
