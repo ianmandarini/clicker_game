@@ -84,7 +84,7 @@ var AppComponent = (function () {
     };
     AppComponent.prototype.ngOnInit = function () {
         var _this = this;
-        setInterval(function () { _this.gameTick(); }, 1);
+        setInterval(function () { _this.gameTick(); }, 100);
     };
     return AppComponent;
 }());
@@ -338,7 +338,7 @@ var Clicker = (function () {
         return this.count * this.power;
     };
     Clicker.prototype.tick = function () {
-        this.currencyService.add(0, this.cps() / 1000.0);
+        this.currencyService.add(0, this.cps() / 10.0);
     };
     Clicker.prototype.xcount = function () {
         return this.count;
