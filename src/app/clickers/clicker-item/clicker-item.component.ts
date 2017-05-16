@@ -16,6 +16,7 @@ export class ClickerItemComponent implements OnInit {
   @ViewChild('tooltip') public tooltip: NgbTooltip;
 
   private canActivateTooltip: boolean = false;
+  public isOnAnimation: boolean = false;
 
   constructor( 
     public lang: LanguageService,
@@ -23,6 +24,16 @@ export class ClickerItemComponent implements OnInit {
     public clickers: ClickerService) { }
 
   ngOnInit() {
+  }
+
+  onClick()
+  {
+    if(this.clickers.canPurchase(this.clicker_index))
+    {
+      this.isOnAnimation = false;
+      setTimeout(() => {this.isOnAnimation = true;},1);
+    }
+    this.clickers.purchase(this.clicker_index);
   }
 
   public onMouseEnter(): void

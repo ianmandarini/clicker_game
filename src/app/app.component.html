@@ -12,8 +12,9 @@
   <div class="row justify-content-center">
     <div class="col text-center">
       <h4>
-        {{lang.Txt(currency.tagP(0))}}: {{currency.xcount(0)}}
-        <br/>
+        <div [class.hop-animation] = "isOnClickMeButtonShakeAnimation">
+          {{lang.Txt(currency.tagP(0))}}: {{currency.xcount(0)}}
+        </div>
         <small>
           (
             {{xcps()}}
