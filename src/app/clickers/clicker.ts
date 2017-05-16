@@ -53,14 +53,24 @@ export class Clicker {
     return Math.floor(this.cost);
   }
 
+  public cps(): number
+  {
+    return this.count * this.power;
+  }
+
   public tick(): void
   {
-    this.currencyService.add(0,this.count * this.power);
+    this.currencyService.add(0,this.cps()/10.0);
   }
 
   public xcount(): number
   {
     return this.count;
+  }
+
+  public xpower(): number
+  {
+    return this.power;
   }
 
   public purchase(): void
@@ -76,5 +86,10 @@ export class Clicker {
   public getCurrency(): number
   {
     return this.currency;
+  }
+
+  public totalPower(): number
+  {
+    return this.count * this.power;
   }
 }

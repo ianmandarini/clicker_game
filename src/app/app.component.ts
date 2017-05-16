@@ -6,9 +6,11 @@ import { ClickerService } from 'app/clickers/clicker.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+
+  public isOnClickMeButtonShakeAnimation: boolean = false;
 
   constructor(public lang: LanguageService, 
               public currency: CurrencyService, 
@@ -18,6 +20,8 @@ export class AppComponent implements OnInit {
 
   public click()
   {
+    this.isOnClickMeButtonShakeAnimation = false;
+    setTimeout(() => {this.isOnClickMeButtonShakeAnimation = true;},1);
     this.currency.add(0,1);
   }
 
@@ -29,8 +33,18 @@ export class AppComponent implements OnInit {
     }
   }
 
+  public xcps()
+  {
+    let cps: number = 0;
+    for(let i=0; i< this.clickers.total(); i++)
+    {
+      cps += this.clickers.cps(i);
+    }
+    return Math.floor(10.0*cps)/10.0;    
+  }
+
   ngOnInit()
   {
-    setInterval(() => {this.gameTick()},1000);
+    setInterval(() => {this.gameTick()},100);
   }
 }

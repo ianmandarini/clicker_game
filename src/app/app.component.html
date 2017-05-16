@@ -1,31 +1,48 @@
 <div class="container">
+
   <div class="row justify-content-center">
     <div class="col text-center">
       <h1>
         {{lang.txt("title")}}
       </h1>
-    </div>
-  </div>
-  
-  <div class="row justify-content-center">
-    <div class="col text-center">
-      {{lang.Txt(currency.tagP(0))}}: {{currency.xcount(0)}}
-    </div>
-  </div>
-
-  <div class="row justify-content-center">
-    <div class="col text-center">
-      <button type="button" class="btn btn-primary" (click)="click()">
-      {{lang.txt("click_button_text")}}
-      </button>
-    </div>
-  </div>
-
-  <app-clicker-panel></app-clicker-panel>
-
-  <div class="row justify-content-center">
-    <div class="col text-center">
       {{lang.txt("credits")}}
+    </div>
+  </div>
+
+  <div class="row justify-content-center">
+    <div class="col text-center">
+      <h4>
+        {{lang.Txt(currency.tagP(0))}}: {{currency.xcount(0)}}
+        <br/>
+        <small>
+          (
+            {{xcps()}}
+            {{lang.Txt("clicks")}}/{{lang.txt("s")}}
+          )
+        </small>
+      </h4>
+    </div>
+  </div>
+
+  <div class="row main-row align-items-top">
+    <div class="col col-sm-8">
+
+      <div class="row justify-content-top">
+        <div class="col text-center">
+          <button type="button" 
+                  class="btn btn-lg btn-primary click-me-button" 
+                  (click)="click()"
+                  [class.shake-animation] = "isOnClickMeButtonShakeAnimation">
+            <h2>
+              {{lang.txt("click_button_text")}}
+            </h2>
+          </button>
+        </div>
+      </div>
+
+    </div>
+    <div class="col col-sm-4">
+      <app-clicker-panel></app-clicker-panel>
     </div>
   </div>
 

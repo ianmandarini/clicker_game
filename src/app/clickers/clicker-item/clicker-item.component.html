@@ -1,19 +1,42 @@
-<p>
-  {{lang.Txt(clickers.tagS(clicker_index))}}
-  (
-  {{lang.Txt("count")}}:
-  {{clickers.xcount(clicker_index)}}
-  )
-<br/>
-  {{lang.Txt(clickers.tagDescription(clicker_index))}}
-<br/>
-  {{lang.Txt("costs")}}
-  {{clickers.xcost(clicker_index)}}
-  {{lang.Txt(currency.tagP(clickers.getCurrency(clicker_index)))}}
-<br/>
-<button type="button"
-      class="btn btn-primary"
-      [disabled]="!clickers.canPurchase(clicker_index)" 
-      (click)="clickers.purchase(clicker_index)">
-  {{lang.Txt("buy")}}
-</button>
+<div  class="card panel-item btn"
+      #tooltip="ngbTooltip"
+      triggers="manual"
+      placement="top"
+      ngbTooltip="{{lang.Txt(clickers.tagDescription(clicker_index))}}"
+      [class.disabled]="!clickers.canPurchase(clicker_index)" 
+      (click)="clickers.purchase(clicker_index)"
+      (mouseenter)="onMouseEnter()"
+      (mouseleave)="onMouseLeave()"
+      (press)="onPress()"
+      (tap)="onMouseLeave()">
+  <div class="card-block" >
+    <div class="row">
+      <div class="col">
+        <h5>
+          {{lang.Txt(clickers.tagS(clicker_index))}}
+          <br/>
+          <small>
+            {{lang.Txt("costs")}}
+            {{clickers.xcost(clicker_index)}}
+            {{lang.Txt(currency.tagP(clickers.getCurrency(clicker_index)))}}
+          </small>
+        </h5>
+      </div>
+      <div class="col">
+        <b>
+          {{lang.Txt("count")}}:
+          {{clickers.xcount(clicker_index)}}
+        </b>
+        <br/>
+        {{lang.Txt("produces")}}
+        {{clickers.xpower(clicker_index)}}
+        {{lang.Txt("clicks")}}/{{lang.txt("s")}}
+        <br/>
+        {{lang.Txt("total")}}
+        {{lang.txt("of")}}
+        {{clickers.totalPower(clicker_index)}}
+        {{lang.Txt("clicks")}}/{{lang.txt("s")}}
+      </div>
+    </div>
+  </div>
+</div>

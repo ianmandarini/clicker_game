@@ -1,0 +1,73 @@
+/* You can add global styles to this file, and also import other style files */
+$panel-item-bg-color: #dee7ed;
+$panel-item-margin: 5px;
+$panel-item-padding: 6px;
+
+html,
+body
+{
+  height: 100%;
+}
+
+.row
+{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.panel-item
+{
+  background-color: $panel-item-bg-color;
+  margin: $panel-item-margin;
+  font-size: 80%;
+
+  &.disabled
+  {
+    opacity: 0.3;
+  }
+
+  &.card
+  {
+    padding: $panel-item-padding;
+      padding-top: 0px;
+      padding-bottom: 0px;
+
+    & > .card-block
+    {
+      padding: $panel-item-padding;
+      padding-top: 0px;
+      padding-bottom: 0px;
+    }
+  }
+
+}
+
+.btn
+{
+  cursor: pointer;
+}
+
+.container {
+  padding-top: 25px;
+  padding-bottom: 25px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.card {
+  padding: 20px;
+  margin: 5px;
+}
+
+.click-me-button 
+{
+  width: 320px;
+  height: 180px;
+}
+
+.main-row
+{
+  display: flex;
+  flex-grow: 1;
+}
