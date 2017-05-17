@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 import { LanguageService } from 'app/language/language.service'
 import { CurrencyService } from 'app/currency/currency.service'
 import { ClickerService } from 'app/clickers/clicker.service'
+import { ProgressService } from 'app/progress/progress.service'
 
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
@@ -29,7 +30,8 @@ import { ClickerItemComponent } from './clickers/clicker-item/clicker-item.compo
   providers: [
     LanguageService,
     CurrencyService,
-    ClickerService
+    ClickerService,
+    ProgressService
   ],
   bootstrap: [AppComponent]
 })

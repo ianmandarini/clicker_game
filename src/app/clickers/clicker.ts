@@ -1,4 +1,5 @@
 import { CurrencyService } from 'app/currency/currency.service';
+import { ProgressService } from 'app/progress/progress.service';
 
 export class Clicker {
   private enabled: boolean = false;
@@ -6,15 +7,25 @@ export class Clicker {
 
   constructor(
     private currencyService: CurrencyService,
+    private progressService: ProgressService,
     private tag_singular,
     private tag_plural,
     private tag_description,
+    private reveal: number,
+    private reveal_cost: number,
+    private reveal_name: number,
     private power: number,
     private currency: number,
     private cost: number,
     private cost_multiplier: number)
   {
-
+    let self = this;
+    this.progressService.addCondition(this.tag_singular + "_reveal",
+      function(): boolean {return self.progressService.isActive('clicker_panel_purchase') && self.currencyService.hasEnough(self.currency,self.reveal);});
+    this.progressService.addCondition(this.tag_singular + "_reveal_cost",
+      function(): boolean {return self.progressService.isActive('clicker_panel_purchase') && self.currencyService.hasEnough(self.currency,self.reveal_cost);});
+    this.progressService.addCondition(this.tag_singular + "_reveal_name",
+      function(): boolean {return self.progressService.isActive('clicker_panel_purchase') && self.currencyService.hasEnough(self.currency,self.reveal_name);});
   }
 
   public setup(): void
@@ -80,6 +91,8 @@ export class Clicker {
       this.currencyService.add(this.currency,(-1)*this.xcost());
       this.cost *= this.cost_multiplier;
       this.count += 1;
+
+      this.progressService.trigger(this.tag_singular + "_purchase");
     }
   }
 

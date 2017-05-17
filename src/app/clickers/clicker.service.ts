@@ -1,16 +1,43 @@
 import { Injectable } from '@angular/core';
 import { Clicker } from 'app/clickers/clicker'
 import { CurrencyService } from 'app/currency/currency.service';
+import { ProgressService } from 'app/progress/progress.service';
 
 @Injectable()
 export class ClickerService {
 
   private clickers: Clicker[] = [];
 
-  constructor(private currencyService: CurrencyService) 
+  constructor(private currencyService: CurrencyService,
+              private progressService: ProgressService) 
   { 
-    this.clickers.push(new Clicker(currencyService,"clicker","clickers","clicker_description",0.1,0,20,1.05));
-    this.clickers.push(new Clicker(currencyService,"intern","interns","intern_description",2,0,300,1.10));
+    this.clickers.push(new Clicker(
+      currencyService,
+      progressService,
+      "clicker",
+      "clickers",
+      "clicker_description",
+      0,        // reveal
+      0,        // reveal_cost
+      0,        // reveal_name
+      0.1,      // power
+      0,        // currency
+      15,       // cost
+      1.05));   // cost_multiplier
+
+    this.clickers.push(new Clicker(
+      currencyService,
+      progressService,
+      "intern",
+      "interns",
+      "intern_description",
+      150,
+      200,
+      250,
+      2,
+      0,
+      300,
+      1.10));
   }
 
   public tagS(clicker_index: number): string
@@ -55,7 +82,11 @@ export class ClickerService {
 
   public purchase(clicker_index: number): void
   {
-    return this.clickers[clicker_index].purchase();
+    if(this.canPurchase(clicker_index))
+    {
+      this.progressService.trigger('generic_clicker_purchase');
+      return this.clickers[clicker_index].purchase();
+    }
   }
 
   public total(): number

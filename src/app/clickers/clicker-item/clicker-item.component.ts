@@ -1,7 +1,8 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { CurrencyService } from 'app/currency/currency.service';
 import { ClickerService } from 'app/clickers/clicker.service';
-import { LanguageService } from 'app/language/language.service'
+import { LanguageService } from 'app/language/language.service';
+import { ProgressService } from 'app/progress/progress.service'
 import {NgbTooltip} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -21,7 +22,8 @@ export class ClickerItemComponent implements OnInit {
   constructor( 
     public lang: LanguageService,
     public currency: CurrencyService,
-    public clickers: ClickerService) { }
+    public clickers: ClickerService,
+    public progress: ProgressService) { }
 
   ngOnInit() {
   }
@@ -32,8 +34,8 @@ export class ClickerItemComponent implements OnInit {
     {
       this.isOnAnimation = false;
       setTimeout(() => {this.isOnAnimation = true;},1);
+      this.clickers.purchase(this.clicker_index);
     }
-    this.clickers.purchase(this.clicker_index);
   }
 
   public onMouseEnter(): void

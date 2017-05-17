@@ -6,16 +6,17 @@
         {{lang.txt("title")}}
       </h1>
       {{lang.txt("credits")}}
+      <button class="btn btn-danger" (click)="currency.add(0,100)">+100</button>
     </div>
   </div>
 
-  <div class="row justify-content-center">
+  <div class="row justify-content-center" *ngIf="progress.isActive('button_pressed')">
     <div class="col text-center">
       <h4>
         <div [class.hop-animation] = "isOnClickMeButtonShakeAnimation">
           {{lang.Txt(currency.tagP(0))}}: {{currency.xcount(0)}}
         </div>
-        <small>
+        <small *ngIf="progress.isActive('generic_clicker_purchase')">
           (
             {{xcps()}}
             {{lang.Txt("clicks")}}/{{lang.txt("s")}}
@@ -26,12 +27,13 @@
   </div>
 
   <div class="row main-row align-items-top">
-    <div class="col col-sm-8">
+    <div class="col"
+      [class.col-sm-6]="progress.isActive('clicker_panel_unlocked')">
 
       <div class="row justify-content-top">
         <div class="col text-center">
           <button type="button" 
-                  class="btn btn-lg btn-primary click-me-button" 
+                  class="btn btn-lg btn-primary big-button" 
                   (click)="click()"
                   [class.shake-animation] = "isOnClickMeButtonShakeAnimation">
             <h2>
@@ -42,8 +44,16 @@
       </div>
 
     </div>
-    <div class="col col-sm-4">
-      <app-clicker-panel></app-clicker-panel>
+
+    <div class="col"
+      *ngIf="progress.isActive('clicker_panel_unlocked')">
+
+      <div class="row justify-content-top">
+        <div class="col text-center">
+          <app-clicker-panel></app-clicker-panel>
+        </div>
+      </div>
+
     </div>
   </div>
 
