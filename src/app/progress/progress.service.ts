@@ -23,6 +23,8 @@ export class ProgressService {
 
     this.triggers["clicker_panel_unlocked"] = (new Trigger());
     this.triggers["clicker_panel_purchase"] = (new Trigger());
+
+    this.triggers["free_click_0_reveal"] = (new Trigger());
   }
 
   trigger(trigger_label: string): void

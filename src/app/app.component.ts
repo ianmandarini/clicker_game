@@ -21,6 +21,8 @@ export class AppComponent implements OnInit {
     let self = this;
     this.progress.addCondition("clicker_panel_unlocked",
                                 function(): boolean {return self.currency.hasEnough(0,20);});
+    this.progress.addCondition("free_click_0_reveal",
+                            function(): boolean {return self.clickers.xcount(0) == 2;});
   }
 
   public click()

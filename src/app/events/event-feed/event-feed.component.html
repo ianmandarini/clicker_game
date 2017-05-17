@@ -1,0 +1,10 @@
+<div>
+  <h2 class="text-center">
+    Events Feed
+  </h2>
+  <div class="item-panel text-center">
+    <app-event-item *ngFor="let tag of events.tags()" 
+                    [eventTag]='tag'>
+    </app-event-item>
+  </div>
+</div>

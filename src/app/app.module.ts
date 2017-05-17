@@ -6,6 +6,7 @@ import { LanguageService } from 'app/language/language.service'
 import { CurrencyService } from 'app/currency/currency.service'
 import { ClickerService } from 'app/clickers/clicker.service'
 import { ProgressService } from 'app/progress/progress.service'
+import { EventsService } from 'app/events/events.service'
 
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
@@ -13,12 +14,18 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
 import { ClickerPanelComponent } from './clickers/clicker-panel/clicker-panel.component';
 import { ClickerItemComponent } from './clickers/clicker-item/clicker-item.component';
+import { EventFeedComponent } from './events/event-feed/event-feed.component';
+import { EventItemComponent } from './events/event-item/event-item.component';
+import { SingleButtonEventComponent } from './events/event-item/single-button-event/single-button-event.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ClickerPanelComponent,
-    ClickerItemComponent
+    ClickerItemComponent,
+    EventFeedComponent,
+    EventItemComponent,
+    SingleButtonEventComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +38,8 @@ import { ClickerItemComponent } from './clickers/clicker-item/clicker-item.compo
     LanguageService,
     CurrencyService,
     ClickerService,
-    ProgressService
+    ProgressService,
+    EventsService
   ],
   bootstrap: [AppComponent]
 })

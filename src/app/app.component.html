@@ -6,7 +6,8 @@
         {{lang.txt("title")}}
       </h1>
       {{lang.txt("credits")}}
-      <button class="btn btn-danger" (click)="currency.add(0,100)">+100</button>
+      <br/>
+      <button class="btn btn-danger" (click)="currency.add(0,40)">(DEBUG) +40 Clicks</button>
     </div>
   </div>
 
@@ -27,8 +28,17 @@
   </div>
 
   <div class="row main-row align-items-top">
-    <div class="col"
-      [class.col-sm-6]="progress.isActive('clicker_panel_unlocked')">
+
+    <div class="col">
+      <div class="row justify-content-top">
+        <div class="col text-center">
+          <app-event-feed></app-event-feed>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="col">
 
       <div class="row justify-content-top">
         <div class="col text-center">
@@ -53,8 +63,8 @@
           <app-clicker-panel></app-clicker-panel>
         </div>
       </div>
-
     </div>
+
   </div>
 
 </div>
