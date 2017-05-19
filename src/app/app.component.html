@@ -7,7 +7,6 @@
       </h1>
       {{lang.txt("credits")}}
       <br/>
-      <button class="btn btn-danger" (click)="currency.add(0,40)">(DEBUG) +40 Clicks</button>
     </div>
   </div>
 
@@ -29,7 +28,7 @@
 
   <div class="row main-row align-items-top">
 
-    <div class="col">
+    <div class="col" *ngIf="progress.isActive('events_feed_unlocked')">
       <div class="row justify-content-top">
         <div class="col text-center">
           <app-event-feed></app-event-feed>

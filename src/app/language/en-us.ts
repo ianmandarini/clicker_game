@@ -26,7 +26,7 @@ export var EnUs: any = {
   "click_button_text": "Click Me",
   "clicker_panel_button_text" : "Get Some Help",
 
-  "free_click_0_name" : "Unexpected Freebie",
+  "free_click_0_name" : "Off To a Great Start!",
   "free_click_0_description" : "Congrats, you have just won something!",
-  "free_click_0_button" : "Gain 20 Free Clicks",
+  "free_click_0_button" : "Redeem 150 Free Clicks",
 }

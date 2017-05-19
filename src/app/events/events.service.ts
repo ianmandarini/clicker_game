@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Event } from 'app/events/event';
 import { CurrencyService } from 'app/currency/currency.service';
+import { ProgressService } from 'app/progress/progress.service';
 import { SingleButtonEvent } from 'app/events/event';
 
 @Injectable()
@@ -8,7 +9,7 @@ export class EventsService {
 
   private events: Event[] = [];
 
-  constructor( public currency: CurrencyService )
+  constructor( public currency: CurrencyService, public progress: ProgressService )
   { 
     let self = this;
     this.events["free_click_0"] = <Event> new SingleButtonEvent( "free_click_0_reveal",
@@ -17,7 +18,7 @@ export class EventsService {
                                                                 function():void { },
                                                                 function():void { },
                                                                 "free_click_0_button", 
-                                                                function():void { self.currency.add(0,20); } );
+                                                                function():void { self.currency.add(0,150); } );
   }
 
   public tagN( event_tag: string ): string
