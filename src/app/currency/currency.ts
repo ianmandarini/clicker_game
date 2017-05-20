@@ -55,4 +55,9 @@ export class Currency implements Savable {
   {
     this.count = state["count"];
   }
+
+  public clearState(): void
+  {
+    this.count = 0;
+  }
 }

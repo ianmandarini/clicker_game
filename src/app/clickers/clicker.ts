@@ -80,7 +80,7 @@ export class Clicker implements Savable {
 
   public xcost(): number
   {
-    return Math.floor(this.cost);
+    return Math.floor(this.cost * Math.pow(this.cost_multiplier,this.count));
   }
 
   public cps(): number
@@ -108,7 +108,6 @@ export class Clicker implements Savable {
     if(this.currencyService.hasEnough(this.currency,this.xcost()))
     {
       this.currencyService.add(this.currency,(-1)*this.xcost());
-      this.cost *= this.cost_multiplier;
       this.count += 1;
 
       this.progressService.trigger(this.id_tag + "_purchase");
@@ -128,14 +127,17 @@ export class Clicker implements Savable {
   public getState(): {[label: string]: any}
   {
     let state: {[label: string]: any} = {};
-    state["count"] = this.count; 
-    state["cost"] = this.cost;
+    state["count"] = this.count;
     return state; 
   }
 
   public setState(state : {[label: string]: any}): void
   {
     this.count = state["count"];
-    this.cost = state["cost"];
+  }
+
+  public clearState(): void
+  {
+    this.count = 0;
   }
 }

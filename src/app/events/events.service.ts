@@ -53,4 +53,7 @@ export class EventsService implements Savable {
   {
   }
 
+  public clearState(): void
+  {
+  }
 }

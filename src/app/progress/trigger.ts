@@ -63,4 +63,9 @@ export class Trigger implements Savable {
   {
     this.active = state["active"];
   }
+
+  public clearState(): void
+  {
+    this.active = false;
+  }
 }

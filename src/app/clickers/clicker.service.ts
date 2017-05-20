@@ -129,4 +129,12 @@ export class ClickerService implements Savable {
       clicker.setState(state[clicker.tag()]); 
     }
   }
+
+  public clearState(): void
+  {
+    for(let clicker of this.clickers)
+    {
+      clicker.clearState(); 
+    }
+  }
 }

@@ -16,6 +16,16 @@ export class SaveService {
   {
   }
 
+  public clear()
+  {
+    this.progress.clearState();
+    this.currency.clearState();
+    this.clickers.clearState();
+    this.events.clearState();
+    localStorage.clear();
+    this.save();
+  }
+
   public save(): void
   {
     let save: {[label: string]: any} = {};
