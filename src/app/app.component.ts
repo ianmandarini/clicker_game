@@ -24,7 +24,11 @@ export class AppComponent implements OnInit {
     public save: SaveService
     )
   {
-    this.save.load();
+    let saveData = this.save.load();
+    let currentTimestamp = new Date();
+    let lastTimestamp = new Date(saveData['timestamp']);
+    let msPassed = currentTimestamp.getTime() - lastTimestamp.getTime();
+    this.currency.add(0,msPassed/1000 * this.xcps());    
   }
 
   public click()

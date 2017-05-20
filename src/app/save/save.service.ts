@@ -23,15 +23,17 @@ export class SaveService {
     save['currency'] = this.currency.getState();
     save['clickers'] = this.clickers.getState();
     save['events'] = this.events.getState();
+    save['timestamp'] = new Date();
     localStorage.setItem('save', JSON.stringify(save));
   }
 
-  public load():void
+  public load(): {[label: string]: any}
   {
     let save = JSON.parse(localStorage.getItem('save'));
     this.progress.setState(save["progress"]);
     this.currency.setState(save["currency"]);
     this.clickers.setState(save["clickers"]);
     this.events.setState(save["events"]);
+    return save;
   }
 }
