@@ -4,12 +4,16 @@ export var EnUs: any = {
   "title": "The Clicker Saga",
   "credits": "Made by Ian Albuquerque",
 
-  "clicker" : "clicker",
-  "clickers" : "clickers",
+  "clicker_singular" : "clicker",
+  "clicker_plural" : "clickers",
   "clicker_description" : "You might ask yourself what does a clicker do. The answer might not be that obvious, but it is certainly mesmerizing once you contemplate it.",
   
-  "intern" : "intern",
-  "interns" : "interns",
+  "drinking_bird_singular" : "drinking bird",
+  "drinking_bird_plural" : "drinking birds",
+  "drinking_bird_description" : "Just like that episode from that yellow guy on TV.",
+    
+  "intern_singular" : "intern",
+  "intern_plural" : "interns",
   "intern_description" : "A multi-use, cheap, expandable resource. It features two hands, which allows it to operate at two clicks per second. Amazing!",
 
   "for" : "for",
@@ -27,6 +31,6 @@ export var EnUs: any = {
   "clicker_panel_button_text" : "Get Some Help",
 
   "free_click_0_name" : "Off To a Great Start!",
-  "free_click_0_description" : "Congrats, you have just won something!",
-  "free_click_0_button" : "Redeem 150 Free Clicks",
+  "free_click_0_description" : "He is a boost to help your journey.",
+  "free_click_0_button" : "Redeem 50 Free Clicks",
 }

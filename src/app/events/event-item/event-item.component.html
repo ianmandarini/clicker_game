@@ -4,9 +4,9 @@
     <div class="row">
       <div class="col">
         <h4>
-          {{lang.Txt(events.tagN(eventTag))}}
+          {{lang.txt(events.tagN(eventTag))}}
         </h4>
-        {{lang.Txt(events.tagD(eventTag))}}
+        {{lang.txt(events.tagD(eventTag))}}
         <app-single-button-event *ngIf="isSingleButtonEvent()"
                                   [event]="actual_event"
                                   (close)="onClose()" >

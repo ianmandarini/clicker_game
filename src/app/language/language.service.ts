@@ -11,7 +11,6 @@ export class LanguageService {
 
   constructor()
   { 
-
   }
 
   public txt(text: string): string
@@ -30,7 +29,7 @@ export class LanguageService {
   public Txt(text: string): string
   {
     let display_string = this.txt(text);
-    display_string = display_string.slice(0,1).toUpperCase() + display_string.slice(1);
+    display_string = display_string.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
     return display_string;
   }
 

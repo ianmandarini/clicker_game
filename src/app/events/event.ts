@@ -1,11 +1,24 @@
+import { ProgressService } from 'app/progress/progress.service';
+import { Trigger } from 'app/progress/trigger';
+
 export class Event {
-  constructor(  private reveal_progress_tag: string,
-                private name_tag: string,
-                private description_tag: string,
+
+  private reveal_progress_tag: string;
+  private name_tag: string;
+  private description_tag: string;
+
+  constructor(  private progress: ProgressService,
+                private condition_function: { (): boolean; },
+                protected tag: string,
                 private activation_function: { (): void; },
                 private close_function: { (): void; })
   {
+    this.reveal_progress_tag = tag + "_reveal";
+    this.name_tag = tag + "_name";
+    this.description_tag = tag + "_description";
 
+    this.progress.addTrigger(this.reveal_progress_tag, new Trigger() );
+    this.progress.addCondition(this.reveal_progress_tag,condition_function);
   }
   
   tagR(): string
@@ -36,15 +49,17 @@ export class Event {
 
 export class SingleButtonEvent extends Event {
 
-  constructor(  reveal_progress_tag: string,
-                name_tag: string,
-                description_tag: string,
+  private button_tag: string;
+
+  constructor(  progress: ProgressService,
+                condition_function: { (): boolean; },
+                tag: string,
                 activation_function: { (): void; },
                 close_function: { (): void; },
-                private button_tag: string,
                 private button_function: { (): void; }, ) 
   { 
-    super(reveal_progress_tag, name_tag, description_tag, activation_function, close_function); 
+    super(progress, condition_function, tag, activation_function, close_function);
+    this.button_tag = this.tag + "_button"; 
   }
 
   tagB(): string

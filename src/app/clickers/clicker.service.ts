@@ -2,42 +2,26 @@ import { Injectable } from '@angular/core';
 import { Clicker } from 'app/clickers/clicker'
 import { CurrencyService } from 'app/currency/currency.service';
 import { ProgressService } from 'app/progress/progress.service';
+import { ContentService } from 'app/content/content.service';
 
 @Injectable()
 export class ClickerService {
 
   private clickers: Clicker[] = [];
 
-  constructor(private currencyService: CurrencyService,
-              private progressService: ProgressService) 
+  constructor(private currency: CurrencyService,
+              private progress: ProgressService) 
   { 
-    this.clickers.push(new Clicker(
-      currencyService,
-      progressService,
-      "clicker",
-      "clickers",
-      "clicker_description",
-      0,        // reveal
-      0,        // reveal_cost
-      0,        // reveal_name
-      0.1,      // power
-      0,        // currency
-      15,       // cost
-      1.05));   // cost_multiplier
+  }
 
-    this.clickers.push(new Clicker(
-      currencyService,
-      progressService,
-      "intern",
-      "interns",
-      "intern_description",
-      150,
-      200,
-      250,
-      2,
-      0,
-      300,
-      1.10));
+  public addClicker(clicker: Clicker): void
+  {
+    this.clickers.push(clicker);
+  }
+
+  public tag(clicker_index: number): string
+  {
+    return this.clickers[clicker_index].tag();
   }
 
   public tagS(clicker_index: number): string
@@ -84,7 +68,7 @@ export class ClickerService {
   {
     if(this.canPurchase(clicker_index))
     {
-      this.progressService.trigger('generic_clicker_purchase');
+      this.progress.trigger('generic_clicker_purchase');
       return this.clickers[clicker_index].purchase();
     }
   }
@@ -109,7 +93,7 @@ export class ClickerService {
   public canPurchase(clicker_index: number): boolean
   {
   	let currency = this.getCurrency(clicker_index);
-  	return this.currencyService.hasEnough(currency,this.xcost(clicker_index));
+  	return this.currency.hasEnough(currency,this.xcost(clicker_index));
   }
 
   public tick(clicker_index: number): void

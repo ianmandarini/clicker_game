@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Currency } from 'app/currency/currency'
+import { Currency } from 'app/currency/currency';
 
 @Injectable()
 export class CurrencyService {
@@ -8,8 +8,11 @@ export class CurrencyService {
 
   constructor() 
   { 
-    this.currency.push(new Currency("click","clicks"));
-    this.currency.push(new Currency("money","money"));
+  }
+
+  public addCurrency(currency: Currency)
+  {
+    this.currency.push(currency);
   }
 
   public add(currency_index:number, value: number): void

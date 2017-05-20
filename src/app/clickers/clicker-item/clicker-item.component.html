@@ -1,10 +1,10 @@
 <div  class="card panel-item btn"
-      *ngIf="progress.isActive(clickers.tagS(clicker_index) + '_reveal')"
+      *ngIf="progress.isActive(clickers.tag(clicker_index) + '_reveal')"
       #tooltip="ngbTooltip"
       triggers="manual"
       placement="top"
-      ngbTooltip="{{progress.isActive(clickers.tagS(clicker_index)+'_reveal_name')?
-                    lang.Txt(clickers.tagDescription(clicker_index)):
+      ngbTooltip="{{progress.isActive(clickers.tag(clicker_index)+'_reveal_name')?
+                    lang.txt(clickers.tagDescription(clicker_index)):
                     ''}}"
       [class.disabled]="!clickers.canPurchase(clicker_index)"
       [class.hop-animation]="isOnAnimation" 
@@ -18,10 +18,10 @@
       <div class="col">
         <h5>
 
-          <span *ngIf="progress.isActive(clickers.tagS(clicker_index)+'_reveal_name')">
+          <span *ngIf="progress.isActive(clickers.tag(clicker_index)+'_reveal_name')">
             {{lang.Txt(clickers.tagS(clicker_index))}}
           </span>
-          <span *ngIf="!progress.isActive(clickers.tagS(clicker_index)+'_reveal_name')">
+          <span *ngIf="!progress.isActive(clickers.tag(clicker_index)+'_reveal_name')">
             ???
           </span>
 
@@ -29,10 +29,10 @@
 
           <small>
             {{lang.Txt("costs")}}
-            <span *ngIf="progress.isActive(clickers.tagS(clicker_index)+'_reveal_cost')">
+            <span *ngIf="progress.isActive(clickers.tag(clicker_index)+'_reveal_cost')">
               {{clickers.xcost(clicker_index)}}
             </span>
-            <span *ngIf="!progress.isActive(clickers.tagS(clicker_index)+'_reveal_cost')">
+            <span *ngIf="!progress.isActive(clickers.tag(clicker_index)+'_reveal_cost')">
               ???
             </span>
             {{lang.Txt(currency.tagP(clickers.getCurrency(clicker_index)))}}
@@ -41,7 +41,7 @@
         </h5>
       </div>
       <div class="col">
-        <div *ngIf="progress.isActive(clickers.tagS(clicker_index)+'_purchase')">
+        <div *ngIf="progress.isActive(clickers.tag(clicker_index)+'_purchase')">
           <b>
             {{lang.Txt("count")}}:
             {{clickers.xcount(clicker_index)}}
@@ -56,7 +56,7 @@
           {{clickers.totalPower(clicker_index)}}
           {{lang.Txt("clicks")}}/{{lang.txt("s")}}
         </div>
-        <div *ngIf="!progress.isActive(clickers.tagS(clicker_index)+'_purchase')">
+        <div *ngIf="!progress.isActive(clickers.tag(clicker_index)+'_purchase')">
           <h1>???</h1>
         </div>
       </div>

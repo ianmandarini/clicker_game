@@ -3,6 +3,7 @@ import { LanguageService } from 'app/language/language.service';
 import { CurrencyService } from 'app/currency/currency.service';
 import { ClickerService } from 'app/clickers/clicker.service';
 import { ProgressService } from 'app/progress/progress.service';
+import { ContentService } from 'app/content/content.service';
 
 @Component({
   selector: 'app-root',
@@ -13,18 +14,14 @@ export class AppComponent implements OnInit {
 
   public isOnClickMeButtonShakeAnimation: boolean = false;
 
-  constructor(public lang: LanguageService, 
-              public currency: CurrencyService, 
-              public clickers: ClickerService,
-              public progress: ProgressService)
+  constructor(
+    public content: ContentService,
+    public lang: LanguageService, 
+    public currency: CurrencyService, 
+    public clickers: ClickerService,
+    public progress: ProgressService
+    )
   {
-    let self = this;
-    this.progress.addCondition("clicker_panel_unlocked",
-                                function(): boolean {return self.currency.hasEnough(0,20);});
-    this.progress.addCondition("free_click_0_reveal",
-                            function(): boolean {return self.clickers.xcount(0) == 2;});
-    this.progress.addCondition("events_feed_unlocked",
-                            function(): boolean {return self.clickers.xcount(0) == 2;});
   }
 
   public click()

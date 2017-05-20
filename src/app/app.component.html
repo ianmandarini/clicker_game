@@ -28,8 +28,8 @@
 
   <div class="row main-row align-items-top">
 
-    <div class="col" *ngIf="progress.isActive('events_feed_unlocked')">
-      <div class="row justify-content-top">
+    <div class="col">
+      <div class="row justify-content-top" *ngIf="progress.isActive('events_feed_unlocked')">
         <div class="col text-center">
           <app-event-feed></app-event-feed>
         </div>
@@ -54,10 +54,8 @@
 
     </div>
 
-    <div class="col"
-      *ngIf="progress.isActive('clicker_panel_unlocked')">
-
-      <div class="row justify-content-top">
+    <div class="col">
+      <div class="row justify-content-top" *ngIf="progress.isActive('clicker_panel_unlocked')">
         <div class="col text-center">
           <app-clicker-panel></app-clicker-panel>
         </div>

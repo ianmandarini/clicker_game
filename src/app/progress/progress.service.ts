@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Trigger } from 'app/progress/trigger'
+import { Trigger } from 'app/progress/trigger';
 import { CurrencyService } from 'app/currency/currency.service';
 
 @Injectable()
@@ -7,26 +7,13 @@ export class ProgressService {
 
   private triggers: Trigger[] = [];
 
-  constructor(private currencyService: CurrencyService) { 
-    this.triggers["button_pressed"] = (new Trigger());
-    this.triggers["generic_clicker_purchase"] = (new Trigger());
+  constructor(private currencyService: CurrencyService) 
+  { 
+  }
 
-    this.triggers["clicker_reveal"] = (new Trigger());
-    this.triggers["clicker_reveal_cost"] = (new Trigger());
-    this.triggers["clicker_reveal_name"] = (new Trigger());
-    this.triggers["clicker_purchase"] = (new Trigger());
-
-    this.triggers["intern_reveal"] = (new Trigger());
-    this.triggers["intern_reveal_cost"] = (new Trigger());
-    this.triggers["intern_reveal_name"] = (new Trigger());
-    this.triggers["intern_purchase"] = (new Trigger());
-
-    this.triggers["clicker_panel_unlocked"] = (new Trigger());
-    this.triggers["clicker_panel_purchase"] = (new Trigger());
-
-    this.triggers["events_feed_unlocked"] = (new Trigger());
-
-    this.triggers["free_click_0_reveal"] = (new Trigger());
+  addTrigger(trigger_label: string, trigger: Trigger): void
+  {
+    this.triggers[trigger_label] = trigger;
   }
 
   trigger(trigger_label: string): void

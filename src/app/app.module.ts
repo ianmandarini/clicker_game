@@ -2,12 +2,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { LanguageService } from 'app/language/language.service'
-import { CurrencyService } from 'app/currency/currency.service'
-import { ClickerService } from 'app/clickers/clicker.service'
-import { ProgressService } from 'app/progress/progress.service'
-import { EventsService } from 'app/events/events.service'
-
+import { LanguageService } from 'app/language/language.service';
+import { CurrencyService } from 'app/currency/currency.service';
+import { ClickerService } from 'app/clickers/clicker.service';
+import { ProgressService } from 'app/progress/progress.service';
+import { EventsService } from 'app/events/events.service';
+import { ContentService } from 'app/content/content.service';
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
@@ -39,7 +39,8 @@ import { SingleButtonEventComponent } from './events/event-item/single-button-ev
     CurrencyService,
     ClickerService,
     ProgressService,
-    EventsService
+    EventsService,
+    ContentService
   ],
   bootstrap: [AppComponent]
 })
