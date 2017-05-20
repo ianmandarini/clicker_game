@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Currency } from 'app/currency/currency';
+import { Savable } from 'app/save/savable';
 
 @Injectable()
-export class CurrencyService {
+export class CurrencyService implements Savable {
 
   private currency: Currency[] = [];
 
@@ -18,6 +19,11 @@ export class CurrencyService {
   public add(currency_index:number, value: number): void
   {
     this.currency[currency_index].add(value);
+  }
+
+  public tag(currency_index:number): string
+  {
+    return this.currency[currency_index].tag();
   }
 
   public tagS(currency_index:number): string
@@ -50,5 +56,23 @@ export class CurrencyService {
     let array: number[] = [];
     for (let i = 0; i < this.total(); i++) { array.push(i); }
     return array;
+  }
+
+  public getState(): {[label: string]: any}
+  {
+    let state: {[label: string]: any} = {};
+    for(let currency_instance of this.currency)
+    {
+      state[currency_instance.tag()] = currency_instance.getState(); 
+    }
+    return state; 
+  }
+
+  public setState(state : {[label: string]: any}): void
+  {
+    for(let currency_instance of this.currency)
+    {
+      currency_instance.setState(state[currency_instance.tag()]); 
+    }
   }
 }

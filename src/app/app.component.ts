@@ -4,6 +4,7 @@ import { CurrencyService } from 'app/currency/currency.service';
 import { ClickerService } from 'app/clickers/clicker.service';
 import { ProgressService } from 'app/progress/progress.service';
 import { ContentService } from 'app/content/content.service';
+import { SaveService } from 'app/save/save.service';
 
 @Component({
   selector: 'app-root',
@@ -19,9 +20,11 @@ export class AppComponent implements OnInit {
     public lang: LanguageService, 
     public currency: CurrencyService, 
     public clickers: ClickerService,
-    public progress: ProgressService
+    public progress: ProgressService,
+    public save: SaveService
     )
   {
+    this.save.load();
   }
 
   public click()
@@ -41,6 +44,7 @@ export class AppComponent implements OnInit {
     {
       this.clickers.tick(i);
     }
+    this.save.save();
   }
 
   public xcps()

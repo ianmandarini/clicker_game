@@ -2,11 +2,12 @@ import { Injectable } from '@angular/core';
 import { Event } from 'app/events/event';
 import { CurrencyService } from 'app/currency/currency.service';
 import { ProgressService } from 'app/progress/progress.service';
+import { Savable } from 'app/save/savable';
 
 @Injectable()
-export class EventsService {
+export class EventsService implements Savable {
 
-  private events: Event[] = [];
+  private events: {[label: string]: Event} = {};
 
   constructor( public currency: CurrencyService, public progress: ProgressService )
   { 
@@ -27,11 +28,6 @@ export class EventsService {
     return this.events[event_tag].tagD();
   }
 
-  public total(): number
-  {
-    return this.events.length;
-  }
-
   public tags(): string[]
   {
     let array: string[] = [];    
@@ -45,6 +41,16 @@ export class EventsService {
   public getActualEvent( event_tag: string ): Event
   {
     return this.events[event_tag];
+  }
+
+  public getState(): {[label: string]: any}
+  {
+    let state: {[label: string]: any} = {};
+    return state; 
+  }
+
+  public setState(state : {[label: string]: any}): void
+  {
   }
 
 }

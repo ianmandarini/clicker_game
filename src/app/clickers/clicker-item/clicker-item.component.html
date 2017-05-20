@@ -49,12 +49,12 @@
           <br/>
           {{lang.Txt("produces")}}
           {{clickers.xpower(clicker_index)}}
-          {{lang.Txt("clicks")}}/{{lang.txt("s")}}
+          {{lang.Txt(currency.tagS(0))}}/{{lang.txt("s")}}
           <br/>
           {{lang.Txt("total")}}
           {{lang.txt("of")}}
           {{clickers.totalPower(clicker_index)}}
-          {{lang.Txt("clicks")}}/{{lang.txt("s")}}
+          {{lang.Txt(currency.tagS(0))}}/{{lang.txt("s")}}
         </div>
         <div *ngIf="!progress.isActive(clickers.tag(clicker_index)+'_purchase')">
           <h1>???</h1>

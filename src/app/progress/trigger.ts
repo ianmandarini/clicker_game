@@ -1,4 +1,6 @@
-export class Trigger {
+import { Savable } from 'app/save/savable';
+
+export class Trigger implements Savable {
 
   private active: boolean = false;
   private callbacks: { (): void; } [] = []
@@ -48,5 +50,17 @@ export class Trigger {
       }
     }
     this.activate();
+  }
+
+  public getState(): {[label: string]: any}
+  {
+    let state: {[label: string]: any} = {};
+    state["active"] = this.active;
+    return state; 
+  }
+
+  public setState(state : {[label: string]: any}): void
+  {
+    this.active = state["active"];
   }
 }

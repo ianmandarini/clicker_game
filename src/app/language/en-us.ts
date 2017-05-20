@@ -4,6 +4,9 @@ export var EnUs: any = {
   "title": "The Clicker Saga",
   "credits": "Made by Ian Albuquerque",
 
+  "click_singular": "click",
+  "click_plural": "clicks",
+
   "clicker_singular" : "clicker",
   "clicker_plural" : "clickers",
   "clicker_description" : "You might ask yourself what does a clicker do. The answer might not be that obvious, but it is certainly mesmerizing once you contemplate it.",
@@ -22,8 +25,6 @@ export var EnUs: any = {
   "produces": "produces",
   "of" : "of",
   "s" : "s",
-  "click": "click",
-  "clicks": "clicks",
   "cost" : "cost",
   "costs" : "costs",
   "buy" : "buy",

@@ -8,6 +8,7 @@ import { ClickerService } from 'app/clickers/clicker.service';
 import { ProgressService } from 'app/progress/progress.service';
 import { EventsService } from 'app/events/events.service';
 import { ContentService } from 'app/content/content.service';
+import { SaveService } from 'app/save/save.service';
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
@@ -40,7 +41,8 @@ import { SingleButtonEventComponent } from './events/event-item/single-button-ev
     ClickerService,
     ProgressService,
     EventsService,
-    ContentService
+    ContentService,
+    SaveService
   ],
   bootstrap: [AppComponent]
 })

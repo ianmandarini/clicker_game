@@ -1,8 +1,9 @@
 import { CurrencyService } from 'app/currency/currency.service';
 import { ProgressService } from 'app/progress/progress.service';
 import { Trigger } from 'app/progress/trigger';
+import { Savable } from 'app/save/savable';
 
-export class Clicker {
+export class Clicker implements Savable {
   private enabled: boolean = false;
   private count: number = 0;
 
@@ -122,5 +123,19 @@ export class Clicker {
   public totalPower(): number
   {
     return this.count * this.power;
+  }
+
+  public getState(): {[label: string]: any}
+  {
+    let state: {[label: string]: any} = {};
+    state["count"] = this.count; 
+    state["cost"] = this.cost;
+    return state; 
+  }
+
+  public setState(state : {[label: string]: any}): void
+  {
+    this.count = state["count"];
+    this.cost = state["cost"];
   }
 }

@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Trigger } from 'app/progress/trigger';
 import { CurrencyService } from 'app/currency/currency.service';
+import { Savable } from 'app/save/savable';
 
 @Injectable()
-export class ProgressService {
+export class ProgressService implements Savable {
 
-  private triggers: Trigger[] = [];
+  private triggers: {[label: string]: Trigger} = {};
 
   constructor(private currencyService: CurrencyService) 
   { 
@@ -41,6 +42,31 @@ export class ProgressService {
     for(let key in this.triggers)
     {
       this.triggers[key].tick();
+    }
+  }
+
+  public labels(): string[]
+  {
+    return Object.keys(this.triggers);
+  }
+
+  public getState(): {[label: string]: any}
+  {
+    let state: {[label: string]: any} = {};
+    for(let trigger_label of this.labels())
+    {
+      let trigger: Trigger = this.triggers[trigger_label];
+      state[trigger_label] = trigger.getState(); 
+    }
+    return state; 
+  }
+
+  public setState(state : {[label: string]: any}): void
+  {
+    for(let trigger_label of this.labels())
+    {
+      let trigger: Trigger = this.triggers[trigger_label];
+      trigger.setState(state[trigger_label]); 
     }
   }
 }

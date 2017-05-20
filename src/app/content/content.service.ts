@@ -59,8 +59,7 @@ export class ContentService {
 
   public initCurrency(): void
   {
-    this.currency.addCurrency(new Currency("click","clicks"));
-    this.currency.addCurrency(new Currency("money","money"));
+    this.currency.addCurrency(new Currency("click"));
   }
 
   public initClickers(): void
@@ -74,32 +73,32 @@ export class ContentService {
       0,        // reveal_name
       0.1,      // power
       0,        // currency
-      10,       // cost
-      1.05));   // cost_multiplier
+      15,       // cost
+      1.15));   // cost_multiplier
 
       this.clickers.addClicker(new Clicker(
       this.currency,
       this.progress,
       "drinking_bird",
-      20,        // reveal
-      70,        // reveal_cost
-      80,        // reveal_name
-      1,      // power
-      0,        // currency
-      120,       // cost
-      1.10));   // cost_multiplier
+      0,
+      30,
+      50,
+      1,
+      0,
+      100,
+      1.15));
 
     this.clickers.addClicker(new Clicker(
       this.currency,
       this.progress,
       "intern",
-      60,
-      80,
-      120,
+      100,
+      200,
+      550,
       2,
       0,
-      240,
-      1.10));
+      1100,
+      1.15));
   }
 
 }

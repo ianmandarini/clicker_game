@@ -1,5 +1,5 @@
 <div  class="card panel-item"
-    *ngIf="!is_closed && progress.isActive(actual_event.tagR())">
+    *ngIf="!is_closed && progress.isActive(actual_event.tagR()) && !progress.isActive(actual_event.tagDone())">
   <div class="card-block">
     <div class="row">
       <div class="col">

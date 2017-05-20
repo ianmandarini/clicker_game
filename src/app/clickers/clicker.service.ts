@@ -3,9 +3,10 @@ import { Clicker } from 'app/clickers/clicker'
 import { CurrencyService } from 'app/currency/currency.service';
 import { ProgressService } from 'app/progress/progress.service';
 import { ContentService } from 'app/content/content.service';
+import { Savable } from 'app/save/savable';
 
 @Injectable()
-export class ClickerService {
+export class ClickerService implements Savable {
 
   private clickers: Clicker[] = [];
 
@@ -109,5 +110,23 @@ export class ClickerService {
   public totalPower(clicker_index: number): number
   {
     return Math.floor(10.0*this.clickers[clicker_index].totalPower())/10.0;
+  }
+
+  public getState(): {[label: string]: any}
+  {
+    let state: {[label: string]: any} = {};
+    for(let clicker of this.clickers)
+    {
+      state[clicker.tag()] = clicker.getState(); 
+    }
+    return state; 
+  }
+
+  public setState(state : {[label: string]: any}): void
+  {
+    for(let clicker of this.clickers)
+    {
+      clicker.setState(state[clicker.tag()]); 
+    }
   }
 }
