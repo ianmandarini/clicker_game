@@ -3,6 +3,10 @@ import { LanguageTemplate } from 'app/language/language-template';
 export var EnUs: any = {
   "title": "The Clicker Saga",
   "credits": "Made by Ian Albuquerque",
+  "reset_save_file": "Reset Save File",
+  "menu_label": "Menu",
+  "options_dropdown": "Options",
+  "danger_badge": "Danger",
 
   "click_singular": "click",
   "click_plural": "clicks",

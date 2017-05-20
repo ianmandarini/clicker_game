@@ -42,6 +42,12 @@ body
 
 }
 
+.navbar-custom
+{
+  border-style: solid;
+  border-width: 0px 0px 1px 0px;
+}
+
 .btn
 {
   cursor: pointer;
@@ -50,7 +56,6 @@ body
 .container {
   padding-top: 25px;
   padding-bottom: 25px;
-  height: 100%;
   display: flex;
   flex-direction: column;
 }
