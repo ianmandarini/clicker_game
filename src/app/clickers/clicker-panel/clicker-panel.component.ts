@@ -11,7 +11,7 @@ import { LanguageService } from 'app/language/language.service';
 })
 export class ClickerPanelComponent implements OnInit {
 
-  private clicker_panel_price: number = 20;
+  private clicker_panel_price: number = 30;
   private clicker_panel_currency: number = 0;
 
   constructor(public clickers: ClickerService,

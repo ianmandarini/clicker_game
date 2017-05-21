@@ -34,11 +34,14 @@ export class ContentService {
     this.progress.addTrigger("clicker_panel_purchase", new Trigger() );
 
     this.progress.addTrigger("events_feed_unlocked", new Trigger() );
+    this.progress.addTrigger("events_feed_purchase", new Trigger() );
 
     this.progress.addCondition("clicker_panel_unlocked",
                             function(): boolean {return self.currency.hasEnough(0,5);});
     this.progress.addCondition("events_feed_unlocked",
-                            function(): boolean {return self.clickers.xcount(0) == 3;});
+                            function(): boolean {return self.currency.hasEnough(0,5);});
+
+    this.progress.addTrigger("top_menu_unlocked", new Trigger() );
   }
 
   public initEvents(): void
@@ -55,6 +58,39 @@ export class ContentService {
         function():void { self.currency.add(0,50); } 
         )
       );    
+    this.events.addEvent(
+      "top_menu_reveal_event",
+      <Event> new SingleButtonEvent( 
+        this.progress,
+        function(): boolean { return self.progress.isActive("events_feed_unlocked"); },
+        "top_menu_reveal_event",
+        function():void { },
+        function():void { },
+        function():void { self.progress.trigger("top_menu_unlocked"); } 
+        )
+      );    
+    this.events.addEvent(
+      "save_notification_event",
+      <Event> new SingleButtonEvent( 
+        this.progress,
+        function(): boolean { return self.progress.isActive("events_feed_unlocked"); },
+        "save_notification_event",
+        function():void { },
+        function():void { },
+        function():void { } 
+        )
+      );    
+    this.events.addEvent(
+      "offline_notification_event",
+      <Event> new SingleButtonEvent( 
+        this.progress,
+        function(): boolean { return self.progress.isActive("generic_clicker_purchase"); },
+        "offline_notification_event",
+        function():void { },
+        function():void { },
+        function():void { } 
+        )
+      );  
   }
 
   public initCurrency(): void

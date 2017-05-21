@@ -127,3 +127,16 @@ body
     transform: translate3d(0, -4px, 0);
   }
 }
+
+.left-in-animation {
+  animation: left-in 0.5s linear;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+@keyframes left-in {
+  0%{
+    transform: translate3d(-100%, 0, 0);
+  }
+}

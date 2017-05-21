@@ -33,9 +33,25 @@ export var EnUs: any = {
   "costs" : "costs",
   "buy" : "buy",
   "click_button_text": "Click Me",
-  "clicker_panel_button_text" : "Get Some Help",
+  "clicker_panel_button_text" : "Something Clicky",
+  "events_feed_button_text" : "Something Feedy",
+  "empty_events_feed" : "This list is empty.",
+
+  // EVENTS
 
   "free_click_0_name" : "Off To a Great Start!",
   "free_click_0_description" : "He is a boost to help your journey.",
   "free_click_0_button" : "Redeem 50 Free Clicks",
+
+  "top_menu_reveal_event_name" : "Give Me The Control",
+  "top_menu_reveal_event_description" : "We known you would love to have some control over your life. We cannot offer that, but we can unlock a top menu for you.",
+  "top_menu_reveal_event_button" : "Unlock Top Menu",
+
+  "save_notification_event_name" : "Do not Worry, You Are Safe",
+  "save_notification_event_description" : "The game is saved automatically. You can come back at any time, and your progress will still be there.",
+  "save_notification_event_button" : "Thank You, Handsome Developer",
+
+  "offline_notification_event_name" : "Paid Rest",
+  "offline_notification_event_description" : "The game will continue to run even if it is closed. When you get back, you will receive everything you earned during that time!",
+  "offline_notification_event_button" : "Sleeping Has Never Been So Productive",
 }

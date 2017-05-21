@@ -40,6 +40,10 @@ export class SaveService {
   public load(): {[label: string]: any}
   {
     let save = JSON.parse(localStorage.getItem('save'));
+    if(save === null)
+    {
+      return undefined;
+    }
     this.progress.setState(save["progress"]);
     this.currency.setState(save["currency"]);
     this.clickers.setState(save["clickers"]);

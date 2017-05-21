@@ -38,6 +38,20 @@ export class EventsService implements Savable {
     return array;
   }
 
+  public numShownEvents(): number
+  {
+    let num = 0;   
+    for(let tag in this.events)
+    {
+      let actual_event = this.getActualEvent(tag);
+      if(this.progress.isActive(actual_event.tagR()) && !this.progress.isActive(actual_event.tagDone()))
+      {
+        num += 1;
+      }
+    }
+    return num;
+  }
+
   public getActualEvent( event_tag: string ): Event
   {
     return this.events[event_tag];
