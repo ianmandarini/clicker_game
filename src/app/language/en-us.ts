@@ -40,7 +40,7 @@ export var EnUs: any = {
   // EVENTS
 
   "free_click_0_name" : "Off To a Great Start!",
-  "free_click_0_description" : "He is a boost to help your journey.",
+  "free_click_0_description" : "Here is a boost to help your journey.",
   "free_click_0_button" : "Redeem 50 Free Clicks",
 
   "top_menu_reveal_event_name" : "Give Me The Control",

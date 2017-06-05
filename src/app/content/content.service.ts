@@ -129,11 +129,11 @@ export class ContentService {
       this.progress,
       "intern",
       100,
-      200,
-      550,
+      120,
+      150,
       2,
       0,
-      1100,
+      250,
       1.15));
   }
 
