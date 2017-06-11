@@ -4,7 +4,7 @@ export var EnUs: any = {
   "title": "The Clicker Saga",
   "credits": "Made by Ian Albuquerque",
   "reset_save_file": "Reset Save File",
-  "menu_label": "Menu",
+  "menu_label": "The Clicker Saga",
   "options_dropdown": "Options",
   "danger_badge": "Danger",
 
