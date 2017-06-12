@@ -1,4 +1,4 @@
-<div *ngIf="progress.isActive('clicker_panel_purchase')">
+<div *ngIf="progress.isActive('clicker_panel_unlocked')">
   <h2 class="text-center">
     Clickers
   </h2>
@@ -7,22 +7,4 @@
                     [clickerIndex]='i'>
     </app-clicker-item>
   </div>
-</div>
-<div *ngIf="!progress.isActive('clicker_panel_purchase')">
-  <button type="button" 
-          class="btn btn-lg btn-outline-primary big-button"
-          [class.disabled]="!canPurchase()" 
-          (click)="purchase()">
-    <h2>
-      {{lang.txt("clicker_panel_button_text")}}
-      <br/>
-      <small>
-        (
-          {{lang.Txt("costs")}}
-          {{xcost()}}
-          {{lang.Txt(currencyTagP())}}
-        )
-      </small>
-    </h2>
-  </button>  
 </div>

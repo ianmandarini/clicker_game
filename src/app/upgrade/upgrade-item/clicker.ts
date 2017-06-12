@@ -35,11 +35,11 @@ export class Clicker implements Savable {
     this.progressService.addTrigger(this.id_tag + "_purchase", new Trigger() );
 
     this.progressService.addCondition(this.id_tag + "_reveal",
-      function(): boolean { return self.currencyService.hasEnough(self.currency,self.reveal);});
+      function(): boolean {return self.progressService.isActive('clicker_panel_purchase') && self.currencyService.hasEnough(self.currency,self.reveal);});
     this.progressService.addCondition(this.id_tag + "_reveal_cost",
-      function(): boolean { return self.currencyService.hasEnough(self.currency,self.reveal_cost);});
+      function(): boolean {return self.progressService.isActive('clicker_panel_purchase') && self.currencyService.hasEnough(self.currency,self.reveal_cost);});
     this.progressService.addCondition(this.id_tag + "_reveal_name",
-      function(): boolean { return self.currencyService.hasEnough(self.currency,self.reveal_name);});
+      function(): boolean {return self.progressService.isActive('clicker_panel_purchase') && self.currencyService.hasEnough(self.currency,self.reveal_name);});
   }
 
   public tag(): string
@@ -101,11 +101,6 @@ export class Clicker implements Savable {
   public xpower(): number
   {
     return this.power;
-  }
-
-  public multiplyPower(multiplier: number): void
-  {
-    this.power *= multiplier;
   }
 
   public purchase(): void

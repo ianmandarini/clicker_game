@@ -1,0 +1,27 @@
+<div  class="card panel-item btn left-in-animation"
+  *ngIf="progress.isActive(eventTag + '_reveal')"
+  (click)="onClick()"
+  [class.disabled]="!upgrades.canPurchase(eventTag) || upgrades.isPurchased(eventTag)"
+  [class.btn]="!upgrades.isPurchased(eventTag)">
+  <div class="card-block">
+    <div class="row">
+      <div class="col">
+        <h4>
+          {{lang.txt(upgrades.tagT(eventTag))}}
+        </h4>
+        {{lang.txt(upgrades.tagD(eventTag))}}
+      </div>
+    </div>
+    <div class="row" *ngIf="!upgrades.isPurchased(eventTag)">
+      <div class="col">
+        <h6>
+          (
+          {{lang.Txt("costs")}}
+          {{upgrades.xcost(eventTag)}}
+          {{lang.Txt(currency.tagP(upgrades.getCurrency(eventTag)))}}
+          )
+        </h6>
+      </div>
+    </div>
+  </div>
+</div>

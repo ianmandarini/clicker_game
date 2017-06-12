@@ -1,4 +1,4 @@
-<div *ngIf="progress.isActive('events_feed_purchase')">
+<div *ngIf="progress.isActive('events_feed_unlocked')">
   <h2 class="text-center">
     Events Feed
   </h2>
@@ -10,22 +10,4 @@
       {{lang.txt("empty_events_feed")}}
     </div>
   </div>
-</div>
-<div *ngIf="!progress.isActive('events_feed_purchase')">
-  <button type="button" 
-          class="btn btn-lg btn-outline-primary big-button"
-          [class.disabled]="!canPurchase()" 
-          (click)="purchase()">
-    <h2>
-      {{lang.txt("events_feed_button_text")}}
-      <br/>
-      <small>
-        (
-          {{lang.Txt("costs")}}
-          {{xcost()}}
-          {{lang.Txt(currencyTagP())}}
-        )
-      </small>
-    </h2>
-  </button>  
 </div>

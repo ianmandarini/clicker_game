@@ -27,7 +27,7 @@
   </div>
 </nav>
 
-<div class="container">
+<div class="container-fluid">
 
   <div class="row justify-content-center">
     <div class="col text-center">
@@ -55,19 +55,17 @@
     </div>
   </div>
 
-  <div class="row main-row align-items-top">
+  <div class="row core-row align-items-top">
 
     <div class="col">
-      <div class="row justify-content-top" *ngIf="progress.isActive('events_feed_unlocked')">
+      <div class="row justify-content-top" *ngIf="progress.isActive('upgrade_tab_unlocked')">
         <div class="col text-center">
-          <app-event-feed></app-event-feed>
+          <app-upgrade-panel></app-upgrade-panel>
         </div>
       </div>
-
     </div>
 
     <div class="col">
-
       <div class="row justify-content-top">
         <div class="col text-center">
           <button type="button" 
@@ -80,7 +78,6 @@
           </button>
         </div>
       </div>
-
     </div>
 
     <div class="col">
@@ -91,6 +88,17 @@
       </div>
     </div>
 
+  </div>
+
+  
+  <div class="row core-row align-items-top">
+    <div class="col">
+      <div class="row justify-content-top" *ngIf="progress.isActive('events_feed_unlocked')">
+        <div class="col text-center">
+          <app-event-feed></app-event-feed>
+        </div>
+      </div>
+    </div>
   </div>
 
 </div>

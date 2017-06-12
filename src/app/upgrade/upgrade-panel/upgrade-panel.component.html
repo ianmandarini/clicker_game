@@ -1,0 +1,22 @@
+<div *ngIf="progress.isActive('upgrade_tab_unlocked')">
+  <h2 class="text-center">
+    Upgrades Purchased
+  </h2>
+  <div class="item-panel text-center">
+    <div *ngFor="let tag of upgrades.tags()">
+      <app-upgrade-item *ngIf="upgrades.isPurchased(tag)" 
+                      [eventTag]='tag'>
+      </app-upgrade-item>
+    </div>
+  </div>
+  <h2 class="text-center">
+    Upgrades Available
+  </h2>
+  <div class="item-panel text-center">
+    <div *ngFor="let tag of upgrades.tags()">
+      <app-upgrade-item *ngIf="!upgrades.isPurchased(tag)" 
+                      [eventTag]='tag'>
+      </app-upgrade-item>
+    </div>
+  </div>
+</div>

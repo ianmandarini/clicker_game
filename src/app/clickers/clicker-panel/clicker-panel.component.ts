@@ -11,9 +11,6 @@ import { LanguageService } from 'app/language/language.service';
 })
 export class ClickerPanelComponent implements OnInit {
 
-  private clicker_panel_price: number = 30;
-  private clicker_panel_currency: number = 0;
-
   constructor(public clickers: ClickerService,
               public progress: ProgressService,
               public currency: CurrencyService,
@@ -22,30 +19,6 @@ export class ClickerPanelComponent implements OnInit {
   }
 
   ngOnInit() {
-  }
-
-  canPurchase(): boolean
-  {
-    return this.currency.hasEnough(this.clicker_panel_currency,this.clicker_panel_price);
-  }
-
-  purchase(): void
-  {
-    if(this.canPurchase())
-    {
-      this.currency.add(this.clicker_panel_currency,(-1)*this.clicker_panel_price);
-      this.progress.trigger("clicker_panel_purchase");    
-    }
-  }
-
-  currencyTagP(): string
-  {
-    return this.currency.tagP(this.clicker_panel_currency);
-  }
-
-  xcost(): number
-  {
-    return Math.floor(this.clicker_panel_price);
   }
 
 }

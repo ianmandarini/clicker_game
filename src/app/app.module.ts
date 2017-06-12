@@ -9,6 +9,8 @@ import { ProgressService } from 'app/progress/progress.service';
 import { EventsService } from 'app/events/events.service';
 import { ContentService } from 'app/content/content.service';
 import { SaveService } from 'app/save/save.service';
+import { UpgradeService } from 'app/upgrade/upgrade.service';
+
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
@@ -18,6 +20,8 @@ import { ClickerItemComponent } from './clickers/clicker-item/clicker-item.compo
 import { EventFeedComponent } from './events/event-feed/event-feed.component';
 import { EventItemComponent } from './events/event-item/event-item.component';
 import { SingleButtonEventComponent } from './events/event-item/single-button-event/single-button-event.component';
+import { UpgradeItemComponent } from './upgrade/upgrade-item/upgrade-item.component';
+import { UpgradePanelComponent } from './upgrade/upgrade-panel/upgrade-panel.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +30,9 @@ import { SingleButtonEventComponent } from './events/event-item/single-button-ev
     ClickerItemComponent,
     EventFeedComponent,
     EventItemComponent,
-    SingleButtonEventComponent
+    SingleButtonEventComponent,
+    UpgradeItemComponent,
+    UpgradePanelComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +48,8 @@ import { SingleButtonEventComponent } from './events/event-item/single-button-ev
     ProgressService,
     EventsService,
     ContentService,
-    SaveService
+    SaveService,
+    UpgradeService
   ],
   bootstrap: [AppComponent]
 })

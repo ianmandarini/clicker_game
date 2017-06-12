@@ -60,6 +60,11 @@ export class ClickerService implements Savable {
     return Math.floor(10.0*this.clickers[clicker_index].xpower())/10.0;
   }
 
+  public multiplyPower(clicker_index: number, multiplier: number): void
+  {
+    this.clickers[clicker_index].multiplyPower(multiplier);
+  }
+
   public xcount(clicker_index: number): number
   {
     return this.clickers[clicker_index].xcount();
