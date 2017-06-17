@@ -72,7 +72,10 @@ export class CurrencyService implements Savable {
   {
     for(let currency_instance of this.currency)
     {
-      currency_instance.setState(state[currency_instance.tag()]); 
+      if(state[currency_instance.tag()] !== undefined)
+      {
+        currency_instance.setState(state[currency_instance.tag()]);
+      }
     }
   }
 

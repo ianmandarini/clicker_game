@@ -62,13 +62,6 @@ export class Trigger implements Savable {
   public setState(state : {[label: string]: any}): void
   {
     this.active = state["active"];
-    if(this.active === true)
-    {
-      for(let callback of this.callbacks)
-      {
-        callback();
-      }     
-    }
   }
 
   public clearState(): void

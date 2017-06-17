@@ -131,7 +131,10 @@ export class ClickerService implements Savable {
   {
     for(let clicker of this.clickers)
     {
-      clicker.setState(state[clicker.tag()]); 
+      if(state[clicker.tag()] !== undefined)
+      {
+        clicker.setState(state[clicker.tag()]); 
+      }
     }
   }
 

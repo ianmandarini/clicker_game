@@ -133,12 +133,14 @@ export class Clicker implements Savable {
   {
     let state: {[label: string]: any} = {};
     state["count"] = this.count;
+    state["power"] = this.power;
     return state; 
   }
 
   public setState(state : {[label: string]: any}): void
   {
     this.count = state["count"];
+    this.power = state["power"];
   }
 
   public clearState(): void

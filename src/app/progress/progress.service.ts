@@ -65,8 +65,10 @@ export class ProgressService implements Savable {
   {
     for(let trigger_label of this.labels())
     {
-      let trigger: Trigger = this.triggers[trigger_label];
-      trigger.setState(state[trigger_label]); 
+      if(state[trigger_label] !== undefined) {
+        let trigger: Trigger = this.triggers[trigger_label];
+        trigger.setState(state[trigger_label]); 
+      }
     }
   }
 
