@@ -7,7 +7,7 @@ import { CurrencyService } from 'app/currency/currency.service';
 @Component({
   selector: 'app-upgrade-item',
   templateUrl: './upgrade-item.component.html',
-  styleUrls: ['./upgrade-item.component.sass']
+  styleUrls: ['./upgrade-item.component.scss']
 })
 export class UpgradeItemComponent implements OnInit {
 

@@ -6,7 +6,7 @@ import { LanguageService } from 'app/language/language.service';
 @Component({
   selector: 'app-upgrade-panel',
   templateUrl: './upgrade-panel.component.html',
-  styleUrls: ['./upgrade-panel.component.sass']
+  styleUrls: ['./upgrade-panel.component.scss']
 })
 export class UpgradePanelComponent implements OnInit {
 

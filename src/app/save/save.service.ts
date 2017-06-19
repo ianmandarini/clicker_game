@@ -4,6 +4,7 @@ import { CurrencyService } from 'app/currency/currency.service';
 import { ClickerService } from 'app/clickers/clicker.service';
 import { EventsService } from 'app/events/events.service';
 import { UpgradeService } from 'app/upgrade/upgrade.service';
+import { CompanionService } from 'app/companion/companion.service';
 
 @Injectable()
 export class SaveService {
@@ -13,7 +14,8 @@ export class SaveService {
     private currency: CurrencyService,
     private clickers: ClickerService,
     private events: EventsService,
-    private upgrades: UpgradeService
+    private upgrades: UpgradeService,
+    private companion: CompanionService
   ) 
   {
   }
@@ -25,6 +27,7 @@ export class SaveService {
     this.clickers.clearState();
     this.events.clearState();
     this.upgrades.clearState();
+    this.companion.clearState();
     localStorage.clear();
     this.save();
   }
@@ -37,6 +40,7 @@ export class SaveService {
     save['clickers'] = this.clickers.getState();
     save['events'] = this.events.getState();
     save['upgrades'] = this.upgrades.getState();
+    save['companion'] = this.companion.getState();
     save['timestamp'] = new Date();
     localStorage.setItem('save', JSON.stringify(save));
   }
@@ -53,6 +57,7 @@ export class SaveService {
     this.clickers.setState(save["clickers"]);
     this.events.setState(save["events"]);
     this.upgrades.setState(save["upgrades"]);
+    this.companion.setState(save["companion"]);
     return save;
   }
 }

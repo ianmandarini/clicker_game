@@ -10,7 +10,7 @@ import { EventsService } from 'app/events/events.service';
 import { ContentService } from 'app/content/content.service';
 import { SaveService } from 'app/save/save.service';
 import { UpgradeService } from 'app/upgrade/upgrade.service';
-
+import { CompanionService } from 'app/companion/companion.service';
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
@@ -22,6 +22,7 @@ import { EventItemComponent } from './events/event-item/event-item.component';
 import { SingleButtonEventComponent } from './events/event-item/single-button-event/single-button-event.component';
 import { UpgradeItemComponent } from './upgrade/upgrade-item/upgrade-item.component';
 import { UpgradePanelComponent } from './upgrade/upgrade-panel/upgrade-panel.component';
+import { CompanionPanelComponent } from './companion/companion-panel/companion-panel.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { UpgradePanelComponent } from './upgrade/upgrade-panel/upgrade-panel.com
     EventItemComponent,
     SingleButtonEventComponent,
     UpgradeItemComponent,
-    UpgradePanelComponent
+    UpgradePanelComponent,
+    CompanionPanelComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +51,8 @@ import { UpgradePanelComponent } from './upgrade/upgrade-panel/upgrade-panel.com
     EventsService,
     ContentService,
     SaveService,
-    UpgradeService
+    UpgradeService,
+    CompanionService
   ],
   bootstrap: [AppComponent]
 })

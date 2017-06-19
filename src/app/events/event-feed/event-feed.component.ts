@@ -7,7 +7,7 @@ import { LanguageService } from 'app/language/language.service';
 @Component({
   selector: 'app-event-feed',
   templateUrl: './event-feed.component.html',
-  styleUrls: ['./event-feed.component.sass']
+  styleUrls: ['./event-feed.component.scss']
 })
 export class EventFeedComponent implements OnInit {
 

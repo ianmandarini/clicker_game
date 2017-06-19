@@ -1,0 +1,20 @@
+<div class="companion-panel">
+  <div class="header" (click)="onHeaderClick()">
+    <img class="companion-img" width="70px" height="70px" [src]="companion.getPicture()" />
+    <span class="companion-name">
+      Mr. Smiley
+    </span> 
+  </div>
+  <div class="content" [hidden]="!isExpanded">
+    {{lang.txt(companion.getCurrentDialogueLabel())}}
+
+    {{lang.txt(companion.getCurrentDialogueLabel())}}
+
+    {{lang.txt(companion.getCurrentDialogueLabel())}}
+
+    {{lang.txt(companion.getCurrentDialogueLabel())}}
+
+    {{lang.txt(companion.getCurrentDialogueLabel())}}
+
+  </div>
+</div>

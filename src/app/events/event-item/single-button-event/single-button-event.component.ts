@@ -5,7 +5,7 @@ import { LanguageService } from 'app/language/language.service';
 @Component({
   selector: 'app-single-button-event',
   templateUrl: './single-button-event.component.html',
-  styleUrls: ['./single-button-event.component.sass']
+  styleUrls: ['./single-button-event.component.scss']
 })
 export class SingleButtonEventComponent implements OnInit {
 
